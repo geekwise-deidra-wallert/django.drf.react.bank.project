@@ -20,7 +20,7 @@ class App extends Component {
     }
     refreshList = () => {
         axios
-            .get("https://8000-bbc51d68-9d1c-44a9-be9e-94d7a21c1d62.ws-us02.gitpod.io/todos/")
+            .get("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
             .then(res => this.setState({ todoList: res.data }))
             .catch(err => console.log(err));
     };
@@ -91,17 +91,17 @@ class App extends Component {
         this.toggle();
         if (item.id) {
             axios
-                .put(`https://8000-bbc51d68-9d1c-44a9-be9e-94d7a21c1d62.ws-us02.gitpod.io/todos/${item.id}/`, item)
+                .put(`https://todo-heroku-12-3-19.herokuapp.com/api/todos/${item.id}/`, item)
                 .then(res => this.refreshList());
             return;
         }
         axios
-            .post("https://8000-bbc51d68-9d1c-44a9-be9e-94d7a21c1d62.ws-us02.gitpod.io/todos/", item)
+            .post("https://todo-heroku-12-3-19.herokuapp.com/api/todos/", item)
             .then(res => this.refreshList());
     };
     handleDelete = item => {
         axios
-            .delete(`https://8000-bbc51d68-9d1c-44a9-be9e-94d7a21c1d62.ws-us02.gitpod.io/todos/${item.id}`)
+            .delete(`https://todo-heroku-12-3-19.herokuapp.com/api/todos/${item.id}/`)
             .then(res => this.refreshList());
     };
     createItem = () => {
