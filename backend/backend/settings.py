@@ -125,4 +125,8 @@ STATIC_URL = '/static/'
 
 django_heroku.settings(locals())
 
-CORS_ORIGIN_ALLOW_ALL=True
+# CORS_ORIGIN_ALLOW_ALL=True
+
+CORS_ORIGIN_WHITELIST = (
+    'https://axios-frontend.herokuapp.com',
+)
