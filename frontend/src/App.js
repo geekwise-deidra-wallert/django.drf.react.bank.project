@@ -18,12 +18,14 @@ class App extends Component {
     componentDidMount() {
         this.refreshList();
     }
-    refreshList = () => {
-        axios
-            .get("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
-            .then(res => this.setState({ todoList: res.data }))
-            .catch(err => console.log(err));
-    };
+    async refreshList () {
+        try{
+            let data= await axios
+                .get("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
+                .then(res => this.setState({ todoList: res.data }))
+                .catch(err => console.log(err));
+                return data;
+        }finally{}
     displayCompleted = status => {
         if (status) {
             return this.setState({ viewCompleted: true });
