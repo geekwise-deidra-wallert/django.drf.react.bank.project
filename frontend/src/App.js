@@ -26,6 +26,7 @@ class App extends Component {
                 .catch(err => console.log(err));
                 return data;
         }finally{}
+    }
     displayCompleted = status => {
         if (status) {
             return this.setState({ viewCompleted: true });
