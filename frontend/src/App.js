@@ -19,8 +19,15 @@ class App extends Component {
         this.refreshList();
     }
     async refreshList (){
+      try {
         const response = await fetch("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
+    
         const body = await response.json()
+    
+        console.log(body)
+      } catch(e) {
+        console.log(e.message)
+      }
     }
     // async refreshList () {
     //     try{
