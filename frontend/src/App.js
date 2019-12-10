@@ -23,6 +23,8 @@ class App extends Component {
         const response = await fetch("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
     
         const body = await response.json()
+
+        return body;
     
         console.log(body)
       } catch(e) {
