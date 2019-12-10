@@ -18,18 +18,17 @@ class App extends Component {
     componentDidMount() {
         this.refreshList();
     }
-    async refreshList (){
-      try {
-        const response = await fetch("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
-    
-        const body = await response.json()
+    async refreshList() {
+        try {
+            const response = await fetch("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
 
-        return body;
-    
-        console.log(body)
-      } catch(e) {
-        console.log(e.message)
-      }
+            const body = await response.json()
+
+            return body;
+
+        } catch (e) {
+            console.log(e.message)
+        }
     }
     // async refreshList () {
     //     try{
