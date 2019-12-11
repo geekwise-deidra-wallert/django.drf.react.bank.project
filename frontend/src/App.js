@@ -24,9 +24,10 @@ class App extends Component {
 
             const body = await response.json()
 
-            const update = axios.then(res => this.setState({ todoList: res.data }))
+            // const update = axios.then(res => this.setState({ todoList: res.data }))
 
-            return update;
+            // return update;
+            console.log(body)
 
         } catch (e) {
             console.log(e.message)
