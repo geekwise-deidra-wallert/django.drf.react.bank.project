@@ -15,26 +15,20 @@ class App extends Component {
             todoList: []
         };
     }
-    componentDidMount() {
-        this.refreshList();
+    async componentDidMount() {
+        const {data: todoList} = await axios.get("https://todo-heroku-12-3-19.herokuapp.com/api/todos/");
+        this.setState({ todoList })
     }
-    async refreshList() {
-        try {
-                await fetch("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
-                .then(res => this.setState({ todoList: res.data }))
-        } catch (e) {
-            console.log(e.message)
-        }
+    refreshList = async () => {
+        const {data: post} = await axios.post("https://todo-heroku-12-3-19.herokuapp.com/api/todos/");
+        const todoList = [post, ...this.state.todoList];
+        this.setState({ todoList })
     }
-
-            //     const response = await fetch("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
-
-            // // const body = await response.json()
-
-            // const update = await axios.then(res => this.setState({ todoList: res.data.results }))
-
-            // // return update;
-            // console.log(update)
+    //     const response = await fetch("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
+    // // const body = await response.json()
+    // const update = await axios.then(res => this.setState({ todoList: res.data.results }))
+    // // return update;
+    // console.log(update)
     // async refreshList () {
     //     try{
     //         let data= await axios
