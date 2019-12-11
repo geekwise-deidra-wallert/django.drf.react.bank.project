@@ -20,7 +20,6 @@ class App extends Component {
     }
     async refreshList() {
         try {
-            axios
                 await fetch("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
                 .then(res => this.setState({ todoList: res.data }))
         } catch (e) {
