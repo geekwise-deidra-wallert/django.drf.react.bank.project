@@ -16,14 +16,24 @@ class App extends Component {
         };
     }
     async componentDidMount() {
-        const {data: todoList} = await axios.get("https://todo-heroku-12-3-19.herokuapp.com/api/todos/");
+        const { data: todoList } = await axios.get("https://todo-heroku-12-3-19.herokuapp.com/api/todos/");
         this.setState({ todoList })
     }
-    refreshList = async () => {
-        const {data: post} = await axios.post("https://todo-heroku-12-3-19.herokuapp.com/api/todos/");
+    createItem = async () => {
+        const item = { title: "", description: "", completed: false };
+        const { data: post } = await axios.post("https://todo-heroku-12-3-19.herokuapp.com/api/todos/");
         const todoList = [post, ...this.state.todoList];
-        this.setState({ todoList })
-    }
+        this.setState({ activeItem: item, modal: !this.state.modal, todoList });
+    };
+    // refreshList = async post => {
+    //     const { data } = await axios.put("https://todo-heroku-12-3-19.herokuapp.com/api/todos/" + '/' + post.id, post);
+    //     // axios.patch(apiEndpoint + '/' + post.id, {title: post.title});
+    //     const posts = [...this.state.posts];
+    //     const index = posts.indexOf(post);
+    //     posts[index] = post;
+    //     this.setState({ posts });
+
+    // }
     //     const response = await fetch("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
     // // const body = await response.json()
     // const update = await axios.then(res => this.setState({ todoList: res.data.results }))
@@ -103,7 +113,7 @@ class App extends Component {
     };
     handleSubmit = item => {
         this.toggle();
-        if (item.id) {
+        if (item.id) { await
             axios
                 .put(`https://todo-heroku-12-3-19.herokuapp.com/api/todos/${item.id}/`, item)
                 .then(res => this.refreshList());
@@ -117,10 +127,6 @@ class App extends Component {
         axios
             .delete(`https://todo-heroku-12-3-19.herokuapp.com/api/todos/${item.id}/`)
             .then(res => this.refreshList());
-    };
-    createItem = () => {
-        const item = { title: "", description: "", completed: false };
-        this.setState({ activeItem: item, modal: !this.state.modal });
     };
     editItem = item => {
         this.setState({ activeItem: item, modal: !this.state.modal });
