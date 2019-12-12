@@ -111,7 +111,7 @@ class App extends Component {
     toggle = () => {
         this.setState({ modal: !this.state.modal });
     };
-    handleSubmit = item => {
+    handleSubmit = async item => {
         this.toggle();
         if (item.id) {
             await axios
