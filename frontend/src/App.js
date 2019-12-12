@@ -16,38 +16,14 @@ class App extends Component {
         };
     }
     async componentDidMount() {
-        const { data: todoList } = await axios.get("https://todo-heroku-12-3-19.herokuapp.com/api/todos/");
-        this.setState({ todoList })
+        this.refreshList();
     }
-    createItem = async () => {
-        const item = { title: "", description: "", completed: false };
-        const { data: post } = await axios.post("https://todo-heroku-12-3-19.herokuapp.com/api/todos/");
-        const todoList = [post, ...this.state.todoList];
-        this.setState({ activeItem: item, modal: !this.state.modal, todoList });
+    refreshList = async () => {
+        axios
+            .get("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
+            .then(res => this.setState({ todoList: res.data }))
+            .catch(err => console.log(err));
     };
-    // refreshList = async post => {
-    //     const { data } = await axios.put("https://todo-heroku-12-3-19.herokuapp.com/api/todos/" + '/' + post.id, post);
-    //     // axios.patch(apiEndpoint + '/' + post.id, {title: post.title});
-    //     const posts = [...this.state.posts];
-    //     const index = posts.indexOf(post);
-    //     posts[index] = post;
-    //     this.setState({ posts });
-
-    // }
-    //     const response = await fetch("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
-    // // const body = await response.json()
-    // const update = await axios.then(res => this.setState({ todoList: res.data.results }))
-    // // return update;
-    // console.log(update)
-    // async refreshList () {
-    //     try{
-    //         let data= await axios
-    //             .get("https://todo-heroku-12-3-19.herokuapp.com/api/todos/")
-    //             .then(res => this.setState({ todoList: res.data }))
-    //             .catch(err => console.log(err));
-    //             return data;
-    //     }finally{}
-    // }
     displayCompleted = status => {
         if (status) {
             return this.setState({ viewCompleted: true });
@@ -114,7 +90,7 @@ class App extends Component {
     handleSubmit = async item => {
         this.toggle();
         if (item.id) {
-            await axios
+            axios
                 .put(`https://todo-heroku-12-3-19.herokuapp.com/api/todos/${item.id}/`, item)
                 .then(res => this.refreshList());
             return;
@@ -123,10 +99,14 @@ class App extends Component {
             .post("https://todo-heroku-12-3-19.herokuapp.com/api/todos/", item)
             .then(res => this.refreshList());
     };
-    handleDelete = item => {
+    handleDelete = async item => {
         axios
             .delete(`https://todo-heroku-12-3-19.herokuapp.com/api/todos/${item.id}/`)
             .then(res => this.refreshList());
+    };
+    createItem = () => {
+        const item = { title: "", description: "", completed: false };
+        this.setState({ activeItem: item, modal: !this.state.modal });
     };
     editItem = item => {
         this.setState({ activeItem: item, modal: !this.state.modal });
