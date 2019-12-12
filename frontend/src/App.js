@@ -90,12 +90,12 @@ class App extends Component {
     handleSubmit = async item => {
         this.toggle();
         if (item.id) {
-            axios
+            await axios
                 .put(`https://todo-heroku-12-3-19.herokuapp.com/api/todos/${item.id}/`, item)
                 .then(res => this.refreshList());
             return;
         }
-        axios
+        await axios
             .post("https://todo-heroku-12-3-19.herokuapp.com/api/todos/", item)
             .then(res => this.refreshList());
     };
@@ -104,7 +104,7 @@ class App extends Component {
             .delete(`https://todo-heroku-12-3-19.herokuapp.com/api/todos/${item.id}/`)
             .then(res => this.refreshList());
     };
-    createItem = () => {
+    createItem = async () => {
         const item = { title: "", description: "", completed: false };
         this.setState({ activeItem: item, modal: !this.state.modal });
     };
