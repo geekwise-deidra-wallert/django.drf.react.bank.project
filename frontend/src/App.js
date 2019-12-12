@@ -113,8 +113,8 @@ class App extends Component {
     };
     handleSubmit = item => {
         this.toggle();
-        if (item.id) { await
-            axios
+        if (item.id) {
+            await axios
                 .put(`https://todo-heroku-12-3-19.herokuapp.com/api/todos/${item.id}/`, item)
                 .then(res => this.refreshList());
             return;
