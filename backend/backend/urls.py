@@ -23,6 +23,8 @@ router = routers.DefaultRouter()
 router.register(r'todos', views.TodoView, 'todo')
 router.register(r'users', bank_views.UserViewSet)
 router.register(r'groups', bank_views.GroupViewSet)
+router.register(r'branch', bank_views.BranchViewSet)
+router.register(r'client', bank_views.ClientViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
