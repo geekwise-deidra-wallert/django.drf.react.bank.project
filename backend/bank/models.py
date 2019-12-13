@@ -101,5 +101,5 @@ class Account (models.Model):
 
     def __str__ (self):
         return (
-            f"{self.connect_to_client.client_name} | {self.connect_to_products} | {self.account_current_balance}"
+            f"{self.connect_to_client} | {self.connect_to_products} | {self.account_current_balance}"
         )
