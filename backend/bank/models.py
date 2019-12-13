@@ -45,6 +45,7 @@ class Client (models.Model):
         )
 
 class Product(models.Model):
+    
     default_account_types = (
         ('checking', 'CHECKING'),
         ('savings', 'SAVINGS'),
@@ -77,10 +78,14 @@ class Product(models.Model):
         choices = credit_cards,
         default = credit_cards[0]
     )
+    connect_to_client = models.ForeignKey(
+        Client,
+        on_delete = models.CASCADE
+    )
 
     def __str__(self):
         return (
-            f"{self.default_account_types} | {self.secondary_account_types} | {self.credit_cards}"
+            f"{self.connect_to_client} | {self.default_account_types} | {self.secondary_account_types} | {self.credit_cards}"
         )
 
 class Account (models.Model):
