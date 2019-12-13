@@ -44,57 +44,57 @@ class Client (models.Model):
             f"{self.client_name} | {self.connect_to_branch}"
         )
 
-# class Product(models.Model):
-#     default_account_types = (
-#         ('checking', 'CHECKING'),
-#         ('savings', 'SAVINGS'),
-#         ('none', 'NONE'),
-#     )
-#     default_account_params = models.CharField(
-#         max_length = 8,
-#         choices = default_account_types,
-#         default = default_account_types[0]
-#     )
+class Product(models.Model):
+    default_account_types = (
+        ('checking', 'CHECKING'),
+        ('savings', 'SAVINGS'),
+        ('none', 'NONE'),
+    )
+    default_account_params = models.CharField(
+        max_length = 8,
+        choices = default_account_types,
+        default = default_account_types[0]
+    )
 
-#     secondary_account_types = (
-#         ('checking', 'CHECKING'),
-#         ('savings', 'SAVINGS'),
-#         ('none', 'NONE'),
-#     )
-#     secondary_account_params = models.CharField(
-#         max_length = 8,
-#         choices = secondary_account_types,
-#         default = secondary_account_types[0]
-#     )
-#     credit_cards = (
-#         ('gold','GOLD'),
-#         ('silver','SILVER'),
-#         ('platinum','PLATINUM'),
-#         ('none', 'NONE')
-#     )
-#     credit_card_params = models.CharField(
-#         max_length = 8,
-#         choices = credit_cards,
-#         default = credit_cards[0]
-#     )
+    secondary_account_types = (
+        ('checking', 'CHECKING'),
+        ('savings', 'SAVINGS'),
+        ('none', 'NONE'),
+    )
+    secondary_account_params = models.CharField(
+        max_length = 8,
+        choices = secondary_account_types,
+        default = secondary_account_types[0]
+    )
+    credit_cards = (
+        ('gold','GOLD'),
+        ('silver','SILVER'),
+        ('platinum','PLATINUM'),
+        ('none', 'NONE')
+    )
+    credit_card_params = models.CharField(
+        max_length = 8,
+        choices = credit_cards,
+        default = credit_cards[0]
+    )
 
-#     def __str__(self):
-#         return (
-#             f"{self.default_account_types} | {self.secondary_account_types} | {self.credit_cards}"
-#         )
+    def __str__(self):
+        return (
+            f"{self.default_account_types} | {self.secondary_account_types} | {self.credit_cards}"
+        )
 
-# class Account (models.Model):
-#     connect_to_products = models.ForeignKey(
-#         Product,
-#         on_delete= models.CASCADE
-#     )
-#     connect_to_client = models.OneToOneField(
-#         Client, 
-#         on_delete = models.CASCADE
-#     )
-#     account_current_balance = models.FloatField(max_length=500, default='0.00')
+class Account (models.Model):
+    connect_to_products = models.ForeignKey(
+        Product,
+        on_delete= models.CASCADE
+    )
+    connect_to_client = models.OneToOneField(
+        Client, 
+        on_delete = models.CASCADE
+    )
+    account_current_balance = models.FloatField(max_length=500, default='0.00')
 
-#     def __str__ (self):
-#         return (
-#             f"{self.connect_to_client.client_name} | {self.connect_to_products} | {self.account_current_balance}"
-#         )
+    def __str__ (self):
+        return (
+            f"{self.connect_to_client.client_name} | {self.connect_to_products} | {self.account_current_balance}"
+        )

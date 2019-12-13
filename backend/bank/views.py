@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User, Group
 from bank.models import Branch, Client
 from rest_framework import viewsets
-from bank.serializers import UserSerializer, GroupSerializer, BranchSerializer, ClientSerializer
+from bank.serializers import UserSerializer, GroupSerializer, BranchSerializer, ClientSerializer, ProductSerializer, AccountSerializer
 
 class UserViewSet ( viewsets.ReadOnlyModelViewSet ):
     """
@@ -24,3 +24,11 @@ class BranchViewSet ( viewsets.ReadOnlyModelViewSet ):
 class ClientViewSet ( viewsets.ReadOnlyModelViewSet ):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
+
+class ProductViewSet ( viewsets.ReadOnlyModelViewSet ):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class AccountViewSet ( viewsets.ReadOnlyModelViewSet ):
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
