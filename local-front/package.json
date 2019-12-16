@@ -14,10 +14,11 @@
     "reactstrap": "^8.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "eslintConfig": {
     "extends": "react-app"
