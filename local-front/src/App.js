@@ -21,7 +21,7 @@ class App extends Component {
   refreshList = () => {
     axios
       .get("https://bank-backend-deidra.herokuapp.com/todos/")
-      .then(res => this.setState({ todoList: res.data }))
+      .then(res => this.setState({ todoList: res.data.results }))
       .catch(err => console.log(err));
   };
   displayCompleted = status => {
