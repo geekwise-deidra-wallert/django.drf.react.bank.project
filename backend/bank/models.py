@@ -41,7 +41,7 @@ class Client (models.Model):
 
     def __str__(self):
         return(
-            f"{self.client_name} | {self.connect_to_branch}"
+            f"{self.client_name} | {self.branch_name}"
         )
 
 class Product(models.Model):
@@ -85,7 +85,7 @@ class Product(models.Model):
 
     def __str__(self):
         return (
-            f"{self.connect_to_client} | {self.default_account_params} | {self.secondary_account_params} | {self.credit_card_params}"
+            f"{self.client_name} | {self.default_account_params} | {self.secondary_account_params} | {self.credit_card_params}"
         )
 
 class Account (models.Model):
@@ -101,5 +101,5 @@ class Account (models.Model):
 
     def __str__ (self):
         return (
-            f"{self.connect_to_client} | {self.connect_to_products} | {self.account_current_balance}"
+            f"{self.client_name} | {self.default_account_params} | {self.secondary_account_params} | {self.credit_card_params} | {self.account_current_balance}"
         )
