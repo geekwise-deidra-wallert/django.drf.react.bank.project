@@ -14,5 +14,5 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Product, ProductAdmin)
 
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ('Name', 'Default Account', 'Secondary Account', 'Credit Cards'. 'Balance')
+    list_display = ('Name', 'Default Account', 'Secondary Account', 'Credit Cards', 'Balance')
 admin.site.register(Account, AccountAdmin)
