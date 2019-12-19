@@ -2,17 +2,17 @@ from django.contrib import admin
 from .models import Branch, Client, Product, Account
 
 class BranchAdmin(admin.ModelAdmin):
-    list_display = ('Branch', 'City')
+    list_display = ('branch_name', 'location_city')
 admin.site.register(Branch,BranchAdmin)
 
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('Name', 'Email', 'Branch')
+    list_display = ('client_name', 'client_email', 'connect_to_branch')
 admin.site.register(Client, ClientAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('Name','Default Account', 'Secondary Account', 'Credit Cards')
+    list_display = ('client_name','default_account_params', 'secondary_account_params', 'credit_card_params')
 admin.site.register(Product, ProductAdmin)
 
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ('Name', 'Default Account', 'Secondary Account', 'Credit Cards', 'Balance')
+    list_display = ('client_name', 'account_current_balance')
 admin.site.register(Account, AccountAdmin)
