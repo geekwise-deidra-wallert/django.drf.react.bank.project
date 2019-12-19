@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Branch, Client, Product, Account
 
 class BranchAdmin(admin.ModelAdmin):
-    list_display = ('branch_name', 'location_city')
+    list_display = ('branch_name', 'city_params')
 admin.site.register(Branch, BranchAdmin)
 
 class ClientAdmin(admin.ModelAdmin):
