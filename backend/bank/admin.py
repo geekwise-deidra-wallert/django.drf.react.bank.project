@@ -3,7 +3,7 @@ from .models import Branch, Client, Product, Account
 
 class BranchAdmin(admin.ModelAdmin):
     list_display = ('branch_name', 'location_city')
-admin.site.register(Branch,BranchAdmin)
+admin.site.register(Branch, BranchAdmin)
 
 class ClientAdmin(admin.ModelAdmin):
     list_display = ('client_name', 'client_email', 'connect_to_branch')
@@ -14,5 +14,5 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Product, ProductAdmin)
 
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ('account_current_balance')
+    list_display = ('connect_to_client','account_current_balance')
 admin.site.register(Account, AccountAdmin)
