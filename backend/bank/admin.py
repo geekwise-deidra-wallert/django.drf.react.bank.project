@@ -10,9 +10,9 @@ class ClientAdmin(admin.ModelAdmin):
 admin.site.register(Client, ClientAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('client_name','default_account_params', 'secondary_account_params', 'credit_card_params')
+    list_display = ('default_account_params', 'secondary_account_params', 'credit_card_params')
 admin.site.register(Product, ProductAdmin)
 
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ('client_name', 'account_current_balance')
+    list_display = ('account_current_balance')
 admin.site.register(Account, AccountAdmin)
