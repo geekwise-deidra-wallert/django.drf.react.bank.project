@@ -1,5 +1,5 @@
 # django-drf-react-todo
 
-[Backend](ttps://bank-backend-deidra.herokuapp.com/)
+[Backend](https://bank-backend-deidra.herokuapp.com/)
 ---
-[Fontend](htps://axios-frontend.herokuapp.com/)
+[Fontend](https://axios-frontend.herokuapp.com/)
