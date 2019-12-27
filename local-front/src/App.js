@@ -27,7 +27,7 @@ class App extends Component {
   }
   handeDelete(item) {
     axios
-      .delete("https://bank-backend-deidra.herokuapp.com/branch/${item.id}")
+      .delete(`https://bank-backend-deidra.herokuapp.com/branch/${item.id}/`)
       .then(res => this.componentDidMount());
   }
   renderBranches() {
