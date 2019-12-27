@@ -34,26 +34,26 @@ export default class CustomModal extends Component {
         <ModalBody>
           <Form>
             <FormGroup>
-              <Label for="title">Branch Name</Label>
+              <Label for="branch_name">Branch Name</Label>
               <Input
                 type="text"
-                name="Branch Name"
-                value={this.state.activeItem.title}
+                name="branch_name"
+                value={this.state.activeItem.branch_name}
                 onChange={this.handleChange}
                 placeholder="Enter Branch Name"
               />
             </FormGroup>
             <FormGroup>
-              <Label for="city">City</Label>
+              <Label for="location_city">City</Label>
               <Input
                 type="text"
-                name="city"
-                value={this.state.activeItem.description}
+                name="location_city"
+                value={this.state.activeItem.location_city}
                 onChange={this.handleChange}
                 placeholder="Enter City of Branch"
               />
             </FormGroup>
-            <FormGroup check>
+            {/* <FormGroup check>
               <Label for="completed">
                 <Input
                   type="checkbox"
@@ -63,7 +63,7 @@ export default class CustomModal extends Component {
                 />
                 Completed
               </Label>
-            </FormGroup>
+            </FormGroup> */}
           </Form>
         </ModalBody>
         <ModalFooter>
