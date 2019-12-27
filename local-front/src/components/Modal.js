@@ -14,9 +14,7 @@ import {
 export default class CustomModal extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      activeItem: this.props.activeItem
-    };
+    this.state = { activeItem: this.props.activeItem };
   }
   handleChange = e => {
     let { name, value } = e.target;
@@ -38,7 +36,7 @@ export default class CustomModal extends Component {
               <Input
                 type="text"
                 name="branch_name"
-                value={this.state.activeItem.branch_name}
+                value={this.state.activeItem.name}
                 onChange={this.handleChange}
                 placeholder="Enter Branch Name"
                 maxLength="100"
@@ -49,7 +47,7 @@ export default class CustomModal extends Component {
               <Input
                 type="text"
                 name="location_city"
-                value={this.state.activeItem.location_city}
+                value={this.state.activeItem.name}
                 onChange={this.handleChange}
                 placeholder="Enter City of Branch"
                 maxLength="100"
