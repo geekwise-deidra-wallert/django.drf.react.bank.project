@@ -16,18 +16,18 @@ class App extends Component {
   }
   componentDidMount() {
     axios
-      .get("https://bank-backend-deidra.herokuapp.com/branches/")
+      .get("https://bank-backend-deidra.herokuapp.com/branch/")
       .then(res => this.setState({ branches: res.data.results }))
       .catch(err => console.log(err));
   }
   handleSubmit(item) {
     axios
-      .post("https://bank-backend-deidra.herokuapp.com/branches/")
+      .post("https://bank-backend-deidra.herokuapp.com/branch/")
       .then(res => this.componentDidMount());
   }
   handeDelete(item) {
     axios
-      .delete("https://bank-backend-deidra.herokuapp.com/branches/${item.id}")
+      .delete("https://bank-backend-deidra.herokuapp.com/branch/${item.id}")
       .then(res => this.componentDidMount());
   }
   renderBranches() {
@@ -55,7 +55,7 @@ class App extends Component {
 
   onsave(item) {
     axios
-      .post("https://bank-backend-deidra.herokuapp.com/branches/", item)
+      .post("https://bank-backend-deidra.herokuapp.com/branch/", item)
       .then(res => this.componentDidMount());
   }
   handleChange = e => {
@@ -81,14 +81,14 @@ class App extends Component {
     if (item.id) {
       axios
         .put(
-          `https://bank-backend-deidra.herokuapp.com/branches/${item.id}/`,
+          `https://bank-backend-deidra.herokuapp.com/branch/${item.id}/`,
           item
         )
         .then(res => this.componentDidMount());
       return;
     }
     axios
-      .post("https://bank-backend-deidra.herokuapp.com/branches/", item)
+      .post("https://bank-backend-deidra.herokuapp.com/branch/", item)
       .then(res => this.componentDidMount());
   };
   render() {
