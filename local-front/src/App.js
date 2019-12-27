@@ -53,18 +53,18 @@ class App extends Component {
     ));
   }
 
-  onsave(item) {
+  onSave(item) {
     axios
       .post("https://bank-backend-deidra.herokuapp.com/branch/", item)
       .then(res => this.componentDidMount());
   }
   handleChange = e => {
-    let{name, value} = e.target;
+    let { name, value } = e.target;
     if (e.target.type === "checkbox") {
       value = e.target.checked;
     }
-    const activeItem = {...this.state.activeItem, [name]: value
-    };
+    const activeItem = { ...this.state.activeItem, [name]: value };
+    this.setState({ activeItem });
   };
   createItem = () => {
     const item = { title: "", description: "", completed: false };
@@ -96,17 +96,17 @@ class App extends Component {
       <div>
         <ul>{this.renderBranches()}</ul>
         <button onClick={this.createItem} className="btn btn-primary">
-                      Add task
-                    </button>
+          Add task
+        </button>
         {this.state.modal ? (
-              <Modal
-                activeItem={this.state.activeItem}
-                toggle={this.toggle}
-                onSave={this.handleSubmit}
-              />
-            ) : null}
+          <Modal
+            activeItem={this.state.activeItem}
+            toggle={this.toggle}
+            onSave={this.handleSubmit}
+          />
+        ) : null}
       </div>
-    )
+    );
   }
 }
 export default App;
