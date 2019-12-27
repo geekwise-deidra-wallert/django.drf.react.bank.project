@@ -21,42 +21,9 @@ class App extends Component {
       .catch(err => console.log(err));
   }
   handleSubmit(item) {
-    let api_result;
-    console.log(item + 'item');
-    let api_posturl = 'https://bank-backend-deidra.herokuapp.com/branch/'
-
-    const axios = require('axios');
-    const api_url = 'https://bank-backend-deidra.herokuapp.com/branch/'
-    const custom_options = {
-      headers: {
-        'Origin' : 'https://bank-backend-deidra.herokuapp.com',
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-        'Content-Type' : 'application/json',
-        'Accept' : 'text/html; q=1.0, */*',
-        'X-Requested-With' : 'XMLHttpRequest',
-        'Access-Control-Allow-Headers' : 'X-Requested-With,content-type',
-        'Access-Control-Allow-Credentials' : true,
-      }
-    };
-
-      // let post_data = {
-      //   branch: 'Bank Of Seattle',
-      //   address: '600 University St Ste 1850, Seattle, WA 98101'
-      // }
-
     axios
-        .post( api_url, item, custom_options )
-        .then( (response) => {
-          console.log(response);
-      })
-      .catch( (error) => {
-          console.log(error);
-      });
-
-    // axios
-    //   .post("https://bank-backend-deidra.herokuapp.com/branch/")
-    //   .then(res => this.componentDidMount());
+      .post("https://bank-backend-deidra.herokuapp.com/branch/")
+      .then(res => this.componentDidMount());
   }
   handeDelete(item) {
     axios
@@ -68,18 +35,13 @@ class App extends Component {
     newItems = this.state.branches;
     return newItems.map(item => (
       <div>
-        <li key={item.id}>{item.location_name}</li>
-        <button
-          onClick={() => this.editItem(item)}
-          className="btn btn-secondary mr-2"
-        >
-          {" "}
+        <li key={item.id} className="li-render">
+          {item.branch_name}
+        </li>
+        <button onClick={() => this.editItem(item)} className="btn btn-secondary mr-2">
           Edit{" "}
         </button>
-        <button
-          onClick={() => this.handleDelete(item)}
-          className="btn btn-danger"
-        >
+        <button onClick={() => this.handleDelete(item)} className="btn btn-danger">
           Delete{" "}
         </button>
       </div>
@@ -125,6 +87,7 @@ class App extends Component {
       .then(res => this.componentDidMount());
   };
   render() {
+    console.log(this.state.branches)
     return (
       <div>
         <ul>{this.renderBranches()}</ul>
