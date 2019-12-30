@@ -10,7 +10,7 @@ class ClientAdmin(admin.ModelAdmin):
 admin.site.register(Client, ClientAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('default_account_params')
+    list_display = ('default_account_types')
 admin.site.register(Product, ProductAdmin)
 
 class AccountAdmin(admin.ModelAdmin):
