@@ -32,7 +32,7 @@ class Client (models.Model):
 
     def __str__(self):
         return(
-            f"{self.client_name} | {self.branch.branch_name}"
+            f"{self.client_name} | {self.connect_to_branch}"
         )
 
 class Product(models.Model):
