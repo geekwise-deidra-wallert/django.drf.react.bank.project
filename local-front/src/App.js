@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       activeItem: {
         branch_name: "",
-        location_city: ""
+        city_params: ""
       },
       branches: []
     };
@@ -36,7 +36,7 @@ class App extends Component {
     return newItems.map(item => (
       <div>
         <li key={item.id} className="li-render">
-          {item.branch_name}
+          {item.branch_name}{item.city_params}
         </li>
         <button onClick={() => this.editItem(item)} className="btn btn-secondary mr-2">
           Edit{" "}
