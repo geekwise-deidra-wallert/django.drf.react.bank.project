@@ -6,21 +6,12 @@ class Branch (models.Model):
         verbose_name_plural = 'Branches'
 
     branch_name = models.CharField(max_length=25)
-    location_city = (
-        ('fresno', 'FRESNO'),
-        ('clovis', 'CLOVIS'),
-        ('madera', 'MADERA'),
-    )
-    city_params = models.CharField(
-        max_length = 8,
-        choices = location_city,
-        default = location_city[0]
-    )
+    location_city = models.CharField(max_length=50)
     location_id = str(uuid.uuid4)
 
     def __str__(self):
         return (
-            f"Bank Name : {self.branch_name} | Bank City : {self.city_params}"
+            f"Bank Name : {self.branch_name} | Bank City : {self.location_city}"
             )
 
 class Client (models.Model):
@@ -89,6 +80,8 @@ class Product(models.Model):
         )
 
 class Account (models.Model):
+    account_id = str(uuid.uuid4())
+
     connect_to_products = models.ForeignKey(
         Product,
         on_delete= models.CASCADE
@@ -97,9 +90,9 @@ class Account (models.Model):
         Client, 
         on_delete = models.CASCADE
     )
-    account_current_balance = models.FloatField(max_length=500, default='0.00')
+    # account_current_balance = models.FloatField(max_length=500, default='0.00')
 
     def __str__ (self):
         return (
-            f"{self.client_name} | {self.default_account_params} | {self.secondary_account_params} | {self.credit_card_params} | {self.account_current_balance}"
+            f"{self.client_name} | {self.account_id}| {self.default_account_params} | {self.secondary_account_params}"
         )
