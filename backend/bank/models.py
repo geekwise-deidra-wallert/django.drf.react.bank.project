@@ -55,7 +55,7 @@ class Product(models.Model):
 
     def __str__(self):
         return (
-            f"{self.client_name} | {self.default_account_params}"
+            f"{self.connect_to_client} | {self.default_account_params}"
         )
 
 class Account (models.Model):
@@ -73,5 +73,5 @@ class Account (models.Model):
 
     def __str__ (self):
         return (
-            f"{self.client_name} | {self.account_id}| {self.default_account_params}"
+            f"{self.connect_to_client} | {self.account_id}| {self.default_account_params}"
         )
