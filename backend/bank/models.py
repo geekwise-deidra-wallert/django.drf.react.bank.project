@@ -40,34 +40,13 @@ class Product(models.Model):
     default_account_types = (
         ('checking', 'CHECKING'),
         ('savings', 'SAVINGS'),
-        ('none', 'NONE'),
+        ('credit', 'CREDIT'),
+        ('debit', 'DEBIT')
     )
     default_account_params = models.CharField(
         max_length = 8,
         choices = default_account_types,
         default = default_account_types[0]
-    )
-
-    secondary_account_types = (
-        ('checking', 'CHECKING'),
-        ('savings', 'SAVINGS'),
-        ('none', 'NONE'),
-    )
-    secondary_account_params = models.CharField(
-        max_length = 8,
-        choices = secondary_account_types,
-        default = secondary_account_types[0]
-    )
-    credit_cards = (
-        ('gold','GOLD'),
-        ('silver','SILVER'),
-        ('platinum','PLATINUM'),
-        ('none', 'NONE')
-    )
-    credit_card_params = models.CharField(
-        max_length = 8,
-        choices = credit_cards,
-        default = credit_cards[0]
     )
     connect_to_client = models.ForeignKey(
         Client,
@@ -76,7 +55,7 @@ class Product(models.Model):
 
     def __str__(self):
         return (
-            f"{self.client_name} | {self.default_account_params} | {self.secondary_account_params} | {self.credit_card_params}"
+            f"{self.client_name} | {self.default_account_params}"
         )
 
 class Account (models.Model):
@@ -94,5 +73,5 @@ class Account (models.Model):
 
     def __str__ (self):
         return (
-            f"{self.client_name} | {self.account_id}| {self.default_account_params} | {self.secondary_account_params}"
+            f"{self.client_name} | {self.account_id}| {self.default_account_params}"
         )

@@ -49,8 +49,7 @@ class ProductSerializer( serializers.HyperlinkedModelSerializer ):
             'id',
             'url',
             'default_account_types',
-            'secondary_account_types',
-            'credit_cards',
+            'connect_to_client'
         ]
 class AccountSerializer( serializers.HyperlinkedModelSerializer ):
     class Meta:
