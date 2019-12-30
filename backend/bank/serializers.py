@@ -28,7 +28,7 @@ class BranchSerializer( serializers.HyperlinkedModelSerializer ):
             'id',
             'url',
             'branch_name',
-            'city_params',
+            'location_city',
             'location_id',
         ]
 
@@ -60,4 +60,5 @@ class AccountSerializer( serializers.HyperlinkedModelSerializer ):
             'connect_to_products',
             'connect_to_client',
             'account_current_balance',
+            'account_id'
         ]
