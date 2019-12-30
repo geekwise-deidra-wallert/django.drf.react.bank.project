@@ -20,12 +20,12 @@ class App extends Component {
       .then(res => this.setState({ branches: res.data.results }))
       .catch(err => console.log(err));
   }
-  handleSubmit(item) {
+  handleSubmit() {
     axios
       .post("https://bank-backend-deidra.herokuapp.com/branch/")
       .then(res => this.componentDidMount());
   }
-  handeDelete(item) {
+  handleDelete(item) {
     axios
       .delete(`https://bank-backend-deidra.herokuapp.com/branch/${item.id}/`)
       .then(res => this.componentDidMount());
