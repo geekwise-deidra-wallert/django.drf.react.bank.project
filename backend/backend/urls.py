@@ -25,7 +25,6 @@ router.register(r'users', bank_views.UserViewSet)
 router.register(r'groups', bank_views.GroupViewSet)
 router.register(r'branch', bank_views.BranchViewSet)
 router.register(r'client', bank_views.ClientViewSet)
-router.register(r'branch', bank_views.ProductViewSet)
 router.register(r'product', bank_views.ProductViewSet)
 router.register(r'account', bank_views.AccountViewSet)
 
