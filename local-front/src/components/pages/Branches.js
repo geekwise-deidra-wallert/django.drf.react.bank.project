@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Modal from "../layout/Modal";
+import Modal from "../layout/ModalBranch";
 import axios from "axios";
 
 class Branch extends Component {
@@ -119,7 +119,7 @@ class Branch extends Component {
             onSave={this.handleSubmit}
           />
         ) : null}
-        
+
       </div>
     );
   }
