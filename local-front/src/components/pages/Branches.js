@@ -10,7 +10,11 @@ class Branch extends Component {
         branch_name: "",
         city_params: ""
       },
-      branches: []
+      branches: [],
+      branchActive: true,
+      clientActive: false,
+      productActive: false,
+      accountActive: false
     };
   }
 
@@ -19,6 +23,18 @@ class Branch extends Component {
       .get("https://bank-backend-deidra.herokuapp.com/branch/")
       .then(res => this.setState({ branches: res.data.results }))
       .catch(err => console.log(err));
+  }
+
+  displayBranch = status => {
+    if (status) {
+      return this.setState({
+        branchActive: true,
+        clientActive: false,
+        productActive: false,
+        accountActive: false
+      });
+    }
+    return this.setState({ branchActive: false});
   }
 
   handleSubmit() {

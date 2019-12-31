@@ -8,6 +8,7 @@ function Header(){
         <header style={headerStyle}>
             <h1 style={{color: '#fff'}}>Banking Company</h1>
             <Link style={linkStyle} to='branches'>Branches</Link>
+            <Link style={linkStyle} to='clients'>Clients</Link>
         </header>
     )
 }
