@@ -26,7 +26,26 @@ body {
   color: #ffffff;
 }
 
+.branch-box-style{
+  margin-top: 20px;
+  border: thin solid black;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.new-branch-btn{
+  border: thin solid black;
+}
+
+.li-div{
+  border-bottom: thin solid black;
+  padding: 10px;
+}
+
 .li-render{
   font-size: 25px;
-  color: white;
+  color: black;
+  list-style-type: none;
+  text-align: left;
 }

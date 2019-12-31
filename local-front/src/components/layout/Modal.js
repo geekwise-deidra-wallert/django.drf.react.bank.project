@@ -53,17 +53,6 @@ export default class CustomModal extends Component {
                 maxLength="100"
               />
             </FormGroup>
-            {/* <FormGroup check>
-              <Label for="completed">
-                <Input
-                  type="checkbox"
-                  name="completed"
-                  checked={this.state.activeItem.completed}
-                  onChange={this.handleChange}
-                />
-                Completed
-              </Label>
-            </FormGroup> */}
           </Form>
         </ModalBody>
         <ModalFooter>
