@@ -30,7 +30,7 @@ class BranchSerializer( serializers.HyperlinkedModelSerializer ):
             'url',
             'branch_name',
             'location_city',
-            'location_address'
+            'location_address',
             'location_id',
         ]
 
