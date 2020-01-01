@@ -5,8 +5,9 @@ class Branch (models.Model):
     class Meta:
         verbose_name_plural = 'Branches'
 
-    branch_name = models.CharField(max_length=25)
-    location_city = models.CharField(max_length=50)
+    branch_name = models.CharField(max_length=100)
+    location_city = models.CharField(max_length=100)
+    location_address = models.CharField(max_length=100)
     location_id = str(uuid.uuid4)
 
     def __str__(self):
@@ -17,11 +18,11 @@ class Branch (models.Model):
 class Client (models.Model):
 
     client_name = models.CharField(
-        max_length=50,
+        max_length=100,
         default=''
         )
     client_email = models.CharField(
-        max_length=50,
+        max_length=100,
         default=''
         )
     

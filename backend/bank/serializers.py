@@ -21,6 +21,7 @@ class GroupSerializer( serializers.HyperlinkedModelSerializer ):
             'url',
             'name',
         ]
+
 class BranchSerializer( serializers.HyperlinkedModelSerializer ):
     class Meta:
         model = Branch
@@ -29,6 +30,7 @@ class BranchSerializer( serializers.HyperlinkedModelSerializer ):
             'url',
             'branch_name',
             'location_city',
+            'location_address'
             'location_id',
         ]
 
