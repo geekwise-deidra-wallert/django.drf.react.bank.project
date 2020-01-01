@@ -90,8 +90,8 @@ class Branch extends Component {
   };
 
   createItem = () => {
-    const item = { title: "", description: "", completed: false };
-    this.setState({ activeItem: item, modal: !this.state.modal });
+    const item = { branch_name: "", location_city: "", completed: false };
+    this.setState({ activeItem: item, modal: !this.state.modal, createClient: !this.state.createClient });
   };
 
   editItem = item => {

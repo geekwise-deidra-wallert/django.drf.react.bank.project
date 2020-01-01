@@ -11,18 +11,18 @@ import {
   Label
 } from "reactstrap";
 
-export default class CustomModal extends Component {
+export default class ClientModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeItem: this.props.activeItem };
+    this.state = { activeClient: this.props.activeClient };
   }
   handleChange = e => {
     let { name, value } = e.target;
     if (e.target.type === "checkbox") {
       value = e.target.checked;
     }
-    const activeItem = { ...this.state.activeItem, [name]: value };
-    this.setState({ activeItem });
+    const activeClient = { ...this.state.activeClient, [name]: value };
+    this.setState({ activeClient });
   };
   render() {
     const { toggle, onSave } = this.props;
@@ -36,7 +36,7 @@ export default class CustomModal extends Component {
               <Input
                 type="text"
                 name="client_name"
-                value={this.state.activeItem.name}
+                value={this.state.activeClient.name}
                 onChange={this.handleChange}
                 placeholder="Enter Name of Client"
                 maxLength="100"
@@ -47,7 +47,7 @@ export default class CustomModal extends Component {
               <Input
                 type="text"
                 name="client_email"
-                value={this.state.activeItem.name}
+                value={this.state.activeClient.name}
                 onChange={this.handleChange}
                 placeholder="Enter Clients Email"
                 maxLength="100"
@@ -56,7 +56,7 @@ export default class CustomModal extends Component {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="success" onClick={() => onSave(this.state.activeItem)}>
+          <Button color="success" onClick={() => onSave(this.state.activeClient)}>
             Save
           </Button>
         </ModalFooter>
