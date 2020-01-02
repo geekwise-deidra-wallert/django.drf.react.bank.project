@@ -1,14 +1,18 @@
+/*
 import React, { Component } from "react";
 import Modal from "../layout/ModalBranch";
 import axios from "axios";
 
+
+/*
 class Branch extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activeItem: {
         branch_name: "",
-        city_params: ""
+        location_city: "",
+        location_address: ""
       },
       branches: [],
       branchActive: true,
@@ -50,14 +54,24 @@ class Branch extends Component {
   }
 
   renderBranches() {
+    
+    // let branch_to_add =[]
+    // branch_to_add.push( this.state.branches )
+    // return branch_to_add.map( (value, index) => {
+    //   console.log(`value: ${value}`)
+    //   console.log(`index: ${index}`)
+    // })
+    
     let newItems = [];
     newItems = this.state.branches;
+
     return newItems.map(item => (
-      <div className="li-div row">
+      <div key={item.id} className="li-div row">
 
         <li key={item.id} className="li-render col-8">
           {item.branch_name}
-          {item.city_params}
+          {item.location_city}
+          {item.location_address}
         </li>
 
         <button
@@ -72,6 +86,7 @@ class Branch extends Component {
 
       </div>
     ));
+    
   }
 
   onSave(item) {
@@ -90,7 +105,7 @@ class Branch extends Component {
   };
 
   createItem = () => {
-    const item = { branch_name: "", location_city: "", completed: false };
+    const item = { branch_name: "", location_city: "", location_address: "",completed: false };
     this.setState({ activeItem: item, modal: !this.state.modal, createClient: !this.state.createClient });
   };
 
@@ -140,4 +155,7 @@ class Branch extends Component {
     );
   }
 }
-export default Branch;
+
+
+export default Branch
+*/
