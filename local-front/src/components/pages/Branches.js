@@ -1,9 +1,6 @@
-
 import React, { Component } from "react";
 import Modal from "../layout/ModalBranch";
 import axios from "axios";
-
-
 
 class Branch extends Component {
   constructor(props) {
@@ -53,41 +50,32 @@ class Branch extends Component {
       .then(res => this.componentDidMount());
   }
 
-  renderBranches() {
-    
-    // let branch_to_add =[]
-    // branch_to_add.push( this.state.branches )
-    // return branch_to_add.map( (value, index) => {
-    //   console.log(`value: ${value}`)
-    //   console.log(`index: ${index}`)
-    // })
-    
+  renderBranches() { 
     let newItems = [];
     newItems = this.state.branches;
-    
-
+  
     return newItems.map(item => (
       <div key={item.id} className="li-div row">
 
-        <li key={item.id} className="li-render col-8">
+        <li key={item.id} className="li-render col-lg-6 col-md-7 col-sm-4">
           {item.branch_name}
           {item.location_city}
           {item.location_address}
         </li>
+        <div className="col-lg-4 col-md-4 offset-md-1 col-sm-2">
+          <button
+            onClick={() => this.editItem(item)} className="btn btn-secondary mr-2">
+            Edit{" "}
+          </button>
 
-        <button
-          onClick={() => this.editItem(item)} className="btn btn-secondary mr-2 col">
-          Edit{" "}
-        </button>
-
-        <button
-          onClick={() => this.handleDelete(item)}className="btn btn-danger col">
-          Delete{" "}
-        </button>
+          <button
+            onClick={() => this.handleDelete(item)}className="btn btn-danger">
+            Delete{" "}
+          </button>
+        </div>
 
       </div>
-    ));
-    
+    ));   
   }
 
   onSave(item) {
@@ -137,7 +125,7 @@ class Branch extends Component {
   render() {
     console.log(this.state.branches);
     return (
-      <div className="branch-box-style offset-2 col-8 justify-content-center">
+      <div className="branch-box-style offset-2 col-8 col-sm-10 offset-sm-1 justify-content-center">
 
         <button onClick={this.createItem} className="btn btn-dark btn-lg col-4">
           + New Branch

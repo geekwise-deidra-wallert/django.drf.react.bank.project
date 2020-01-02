@@ -6,12 +6,13 @@ class Client extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeItem: {
+      activeClient: {
         client_name: "",
         client_email: "",
         connect_to_branch: ""
       },
       clients: [],
+      branch_id: [],
       branchActive: false,
       clientActive: true,
       productActive: false,
@@ -22,7 +23,11 @@ class Client extends Component {
   componentDidMount() {
     axios
       .get("https://bank-backend-deidra.herokuapp.com/client/")
-      .then(res => this.setState({ client: res.data.results }))
+      .then(res => this.setState({ client: res.data }))
+      .catch(err => console.log(err));
+    axios
+      .get("https://bank-backend-deidra.herokuapp.com/branch/")
+      .then(res => this.setState({ branch_id: res.data }))
       .catch(err => console.log(err));
   }
 
@@ -53,14 +58,15 @@ class Client extends Component {
   renderClients() {
     let newClient = [];
     newClient = this.state.clients;
+
     return newClient.map(client => (
       <div key={client.id} className="li-div row">
-        {this.props.bankId === client.branch_id &&
+        
+        {/* {this.props.branch_id === client.branch_id &&} */}
             <li key={client.id} className="li-render col-8">
             {client.client_name}
             {client.client_email}
             </li>
-        }
 
         <button 
             onClick={() => this.editItem(client)} className="btn btn-secondary mr-2 col">
@@ -114,7 +120,7 @@ class Client extends Component {
         .then(res => this.componentDidMount());
       return;
     }
-        axios
+      axios
         .post("https://bank-backend-deidra.herokuapp.com/client/", client)
         .then(res => this.componentDidMount());
   };
@@ -131,7 +137,7 @@ class Client extends Component {
         <ul>{this.renderClients()}</ul>
         {this.state.modal ? (
           <Modal
-            bankId={this.props.bankId}
+            branch_id={this.state.branch_id}
             activeClient={this.state.activeClient}
             toggle={this.toggle}
             onSave={this.handleSubmit}

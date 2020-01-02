@@ -85,17 +85,8 @@ export default class ModalBranch extends Component {
         </Form>
         </ModalBody>
         <ModalFooter>
-        <Button color="success"  
-        
-        onClick={() => onSave(this.state.activeItem)
-
-          // let input_values = this.state.activeItem
-          // console.log( input_values )          
-          // this.on_save(input_values)
+        <Button color="success" onClick={() => onSave(this.state.activeItem)
         }
-        //onClick={() => onSave(this.state.activeItem)}
-        //console.log( this.state.activeItem )
-        //console.log( this.state.activeItem ) 
         >
         Save
         </Button>
