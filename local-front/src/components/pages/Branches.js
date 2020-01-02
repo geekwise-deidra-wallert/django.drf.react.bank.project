@@ -1,10 +1,10 @@
-/*
+
 import React, { Component } from "react";
 import Modal from "../layout/ModalBranch";
 import axios from "axios";
 
 
-/*
+
 class Branch extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ class Branch extends Component {
   componentDidMount() {
     axios
       .get("https://bank-backend-deidra.herokuapp.com/branch/")
-      .then(res => this.setState({ branches: res.data.results }))
+      .then(res => this.setState({ branches: res.data }))
       .catch(err => console.log(err));
   }
 
@@ -64,6 +64,7 @@ class Branch extends Component {
     
     let newItems = [];
     newItems = this.state.branches;
+    
 
     return newItems.map(item => (
       <div key={item.id} className="li-div row">
@@ -158,4 +159,3 @@ class Branch extends Component {
 
 
 export default Branch
-*/
