@@ -16,13 +16,10 @@ export default class ClientModal extends Component {
   constructor(props) {
       super(props);
       this.state = {
-      
-      activeClient: {
-                    client_name: "",
-                    client_email: "",
-                    connect_to_branch: ""
-      },
-      branch_id: this.props.branch_id,
+
+        activeClient: this.props.activeClient,
+        branch_id: this.props.branch_id,
+
       };
   }
   handleChange = e => {
@@ -45,7 +42,7 @@ export default class ClientModal extends Component {
               <Input
                 type="text"
                 name="client_name"
-                value={this.state.activeClient.client_name}
+                // value={this.state.activeClient.client_name}
                 onChange={this.handleChange}
                 placeholder="Enter Name of Client"
                 maxLength="100"
@@ -56,14 +53,14 @@ export default class ClientModal extends Component {
               <Input
                 type="text"
                 name="client_email"
-                value={this.state.activeClient.client_email}
+                // value={this.state.activeClient.client_email}
                 onChange={this.handleChange}
                 placeholder="Enter Clients Email"
                 maxLength="100"
               />
             </FormGroup>
             <FormGroup>
-              <Label style={{position: 'relative', bottom: '5px', paddingRight: '13px'}} for="connect_to_branch">Branches</Label>
+              <Label for="connect_to_branch">Branches</Label>
                 <select name="connect_to_branch">
                 {this.state.branch_id.map((value, index) => {
                     return <option key={index} value={value}>{value.branch_name}</option>

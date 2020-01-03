@@ -13,10 +13,10 @@ class Client extends Component {
       },
       clients: [],
       branch_id: [],
-      branchActive: false,
-      clientActive: true,
-      productActive: false,
-      accountActive: false
+      // branchActive: false,
+      // clientActive: true,
+      // productActive: false,
+      // accountActive: false
     };
   }
 
@@ -32,17 +32,17 @@ class Client extends Component {
       console.log(this.state.branch_id)
   }
 
-  displayClient = status => {
-    if (status) {
-      return this.setState({
-        branchActive: false,
-        clientActive: true,
-        productActive: false,
-        accountActive: false
-      });
-    }
-    return this.setState({ clientActive: false });
-  };
+  // displayClient = status => {
+  //   if (status) {
+  //     return this.setState({
+  //       branchActive: false,
+  //       clientActive: true,
+  //       productActive: false,
+  //       accountActive: false
+  //     });
+  //   }
+  //   return this.setState({ clientActive: false });
+  // };
 
   handleSubmit() {
     axios
@@ -64,7 +64,7 @@ class Client extends Component {
       
       <div key={client.id} className="li-div row">
     
-        <li key={client.id} className="li-render col-8">
+        <li key={client.id}  className="li-render col-8">
           {client.client_name}
           {client.client_email}
         </li>
