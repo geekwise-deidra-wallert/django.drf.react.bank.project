@@ -67,6 +67,7 @@ class Client extends Component {
         <li key={client.id}  className="li-render col-8">
           {client.client_name}
           {client.client_email}
+          {client.connect_to_branch}
         </li>
 
         <button 
