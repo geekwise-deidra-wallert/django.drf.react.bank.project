@@ -21,6 +21,7 @@ class Client (models.Model):
         max_length=100,
         default=''
         )
+        
     client_email = models.CharField(
         max_length=100,
         default=''
