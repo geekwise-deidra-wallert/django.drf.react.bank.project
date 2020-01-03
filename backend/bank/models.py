@@ -8,7 +8,7 @@ class Branch (models.Model):
     branch_name = models.CharField(max_length=100)
     location_city = models.CharField(max_length=100)
     location_address = models.CharField(max_length=100)
-    location_id = str(uuid.uuid4)
+    location_id = str(uuid.uuid4())
 
     def __str__(self):
         return (
