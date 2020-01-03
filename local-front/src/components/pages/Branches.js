@@ -7,15 +7,15 @@ class Branch extends Component {
     super(props);
     this.state = {
       activeItem: {
-        branch_name: "",
-        location_city: "",
-        location_address: ""
+                  branch_name: "",
+                  location_city: "",
+                  location_address: ""
       },
       branches: [],
-      branchActive: true,
-      clientActive: false,
-      productActive: false,
-      accountActive: false
+      // branchActive: true,
+      // clientActive: false,
+      // productActive: false,
+      // accountActive: false
     };
   }
 
@@ -26,17 +26,17 @@ class Branch extends Component {
       .catch(err => console.log(err));
   }
 
-  displayBranch = status => {
-    if (status) {
-      return this.setState({
-        branchActive: true,
-        clientActive: false,
-        productActive: false,
-        accountActive: false
-      });
-    }
-    return this.setState({ branchActive: false});
-  }
+  // displayBranch = status => {
+  //   if (status) {
+  //     return this.setState({
+  //       branchActive: true,
+  //       clientActive: false,
+  //       productActive: false,
+  //       accountActive: false
+  //     });
+  //   }
+  //   return this.setState({ branchActive: false});
+  // }
 
   handleSubmit() {
     axios

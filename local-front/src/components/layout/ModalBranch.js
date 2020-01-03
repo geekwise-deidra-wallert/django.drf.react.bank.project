@@ -17,11 +17,7 @@ export default class ModalBranch extends Component {
       super(props)
       this.state = {
         
-      activeItem: {
-                 branch_name: "",
-                 location_city: "",	
-                 location_address: ""
-        },
+      activeItem: this.props.activeItem
       }
   }
 

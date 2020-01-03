@@ -12,16 +12,22 @@ import {
 } from "reactstrap";
 
 export default class ClientModal extends Component {
+
   constructor(props) {
-    super(props);
-    this.state = {
-      activeClient: this.props.activeClient,
+      super(props);
+      this.state = {
+      
+      activeClient: {
+                    client_name: "",
+                    client_email: "",
+                    connect_to_branch: ""
+      },
       branch_id: this.props.branch_id,
       };
   }
   handleChange = e => {
-    let { name, value } = e.target;
-    if (e.target.type === "checkbox") {
+     let { name, value } = e.target;
+      if (e.target.type === "checkbox") {
       value = e.target.checked;
     }
     const activeClient = { ...this.state.activeClient, [name]: value };

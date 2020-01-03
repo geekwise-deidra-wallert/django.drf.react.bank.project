@@ -7,9 +7,9 @@ class Client extends Component {
     super(props);
     this.state = {
       activeClient: {
-        client_name: "",
-        client_email: "",
-        connect_to_branch: ""
+                    client_name: "",
+                    client_email: "",
+                    connect_to_branch: ""
       },
       clients: [],
       branch_id: [],
@@ -29,6 +29,7 @@ class Client extends Component {
       .get("https://bank-backend-deidra.herokuapp.com/branch/")
       .then(res => this.setState({ branch_id: res.data }))
       .catch(err => console.log(err));
+      console.log(this.state.branch_id)
   }
 
   displayClient = status => {
@@ -60,13 +61,13 @@ class Client extends Component {
     newClient = this.state.clients;
 
     return newClient.map(client => (
+      
       <div key={client.id} className="li-div row">
-        
-        {/* {this.props.branch_id === client.branch_id &&} */}
-            <li key={client.id} className="li-render col-8">
-            {client.client_name}
-            {client.client_email}
-            </li>
+    
+        <li key={client.id} className="li-render col-8">
+          {client.client_name}
+          {client.client_email}
+        </li>
 
         <button 
             onClick={() => this.editItem(client)} className="btn btn-secondary mr-2 col">
@@ -126,7 +127,7 @@ class Client extends Component {
   };
 
   render() {
-    console.log(this.state.clients);
+    // console.log(this.state.clients);
     return (
       <div className="branch-box-style offset-2 col-8 justify-content-center">
           {this.renderClients()}
