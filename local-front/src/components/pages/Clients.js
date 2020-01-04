@@ -10,9 +10,11 @@ class Client extends Component {
                     client_name: "",
                     client_email: "",
                     connect_to_branch: ""
+
       },
       clients: [],
       branch_id: [],
+      branchName: '',
       // branchActive: false,
       // clientActive: true,
       // productActive: false,
@@ -23,13 +25,12 @@ class Client extends Component {
   componentDidMount() {
     axios
       .get("https://bank-backend-deidra.herokuapp.com/client/")
-      .then(res => this.setState({ client: res.data }))
+      .then(res => this.setState({ clients: res.data }))
       .catch(err => console.log(err));
     axios
       .get("https://bank-backend-deidra.herokuapp.com/branch/")
       .then(res => this.setState({ branch_id: res.data }))
       .catch(err => console.log(err));
-      console.log(this.state.branch_id)
   }
 
   // displayClient = status => {
@@ -56,9 +57,18 @@ class Client extends Component {
       .then(res => this.componentDidMount());
   }
 
+  getBranchName(url){
+    console.log(url)
+    axios.get(url)
+    .then(res => this.setState({branchName: res.data}))
+    console.log(this.state.branchName)
+    return (<div>test</div>)
+  }
+
   renderClients() {
     let newClient = [];
     newClient = this.state.clients;
+    // this.getBranchName(this.state.activeClient.connect_to_branch)
 
     return newClient.map(client => (
       
@@ -67,7 +77,7 @@ class Client extends Component {
         <li key={client.id}  className="li-render col-8">
           {client.client_name}
           {client.client_email}
-          {client.connect_to_branch}
+          {this.getBranchName(client.connect_to_branch)}
         </li>
 
         <button 
@@ -99,7 +109,7 @@ class Client extends Component {
   };
 
   createClient = () => {
-    const client = { title: "", description: "", completed: false };
+    const client = { title: "", description: ""};
     this.setState({ activeClient: client, modal: !this.state.modal });
   };
 
@@ -112,6 +122,7 @@ class Client extends Component {
   };
 
   handleSubmit = client => {
+    console.log("branchessssss"+Object.keys(client))
     this.toggle();
     if (client.id) {
       axios
@@ -131,7 +142,7 @@ class Client extends Component {
     // console.log(this.state.clients);
     return (
       <div className="branch-box-style offset-2 col-8 justify-content-center">
-          {this.renderClients()}
+          {/* {this.renderClients()} */}
         <button onClick={this.createClient} className="btn btn-dark btn-lg col-4">
           + New Client
         </button>

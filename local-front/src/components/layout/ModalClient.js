@@ -19,18 +19,31 @@ export default class ClientModal extends Component {
 
         activeClient: this.props.activeClient,
         branch_id: this.props.branch_id,
+        branch_value: "",
 
       };
   }
-  handleChange = e => {
-     let { name, value } = e.target;
-      if (e.target.type === "checkbox") {
-      value = e.target.checked;
+  handleChange = event => {
+     let { name, value } = event.target;
+      if (event.target.type === "checkbox") {
+      value = event.target.checked;
     }
     const activeClient = { ...this.state.activeClient, [name]: value };
     this.setState({ activeClient });
   };
+
+  branchInput = e => {
+    console.log(e.target.value)
+    this.setState({branch_value:e.target.value})
+    let activeClient = this.state.activeClient;
+    activeClient.connect_to_branch = e.target.value;
+    this.setState({ activeClient });
+    
+  }
+
+
   render() {
+    const { branch_value } = this.state;
     const { toggle, onSave } = this.props;
     return (
       <Modal isOpen={true} toggle={toggle}>
@@ -61,9 +74,10 @@ export default class ClientModal extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="connect_to_branch">Branches</Label>
-                <select name="connect_to_branch">
-                {this.state.branch_id.map((value, index) => {
-                    return <option key={index} value={value}>{value.branch_name}</option>
+                <select onChange={this.branchInput} value={"branch_value"} name="connect_to_branch">
+                {this.state.branch_id.map((bValue, index) => {
+                    return <option key={index} value={bValue.url}>{bValue.branch_name}</option>
+
                   })
                 }
                 </select>
