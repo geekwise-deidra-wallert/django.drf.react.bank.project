@@ -43,7 +43,6 @@ export default class ClientModal extends Component {
 
 
   render() {
-    const { branch_value } = this.state;
     const { toggle, onSave } = this.props;
     return (
       <Modal isOpen={true} toggle={toggle}>

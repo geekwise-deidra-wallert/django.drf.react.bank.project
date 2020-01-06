@@ -57,13 +57,13 @@ class Client extends Component {
       .then(res => this.componentDidMount());
   }
 
-  getBranchName(url){
-    console.log(url)
-    axios.get(url)
-    .then(res => this.setState({branchName: res.data}))
-    console.log(this.state.branchName)
-    return (<div>test</div>)
-  }
+  // getBranchName(url){
+  //   console.log(url)
+  //   axios.get(url)
+  //   .then(res => this.setState({branchName: res.data}))
+  //   console.log(this.state.branchName)
+  //   return (<div>test</div>)
+  // }
 
   renderClients() {
     let newClient = [];
@@ -77,7 +77,7 @@ class Client extends Component {
         <li key={client.id}  className="li-render col-8">
           {client.client_name}
           {client.client_email}
-          {this.getBranchName(client.connect_to_branch)}
+          {client.connect_to_branch}
         </li>
 
         <button 
