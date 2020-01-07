@@ -1,5 +1,13 @@
 from django.db import models
 import uuid
+from django.contrib.auth import authenticate
+
+
+user = authenticate(username='john', password='secret')
+if user is not None:
+   
+else:
+    
 
 class Branch (models.Model):
     class Meta:
