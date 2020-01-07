@@ -3,10 +3,12 @@ import uuid
 from django.contrib.auth import authenticate
 
 
-user = authenticate(username='john', password='secret')
-if user is not None:
-   
-else:
+# class Auth (models.Model):
+#     user = authenticate(username='', password='')
+#     if user is not None:
+
+#     else:
+
     
 
 class Branch (models.Model):
