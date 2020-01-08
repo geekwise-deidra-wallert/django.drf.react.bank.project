@@ -22,5 +22,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # url('debug/', RedirectView.as_view(url='google.com', permanent=False), name='index'),
-    path('', include('account.urls')),
+    path('users/', include('account.urls')),
 ]
