@@ -28,8 +28,13 @@ router.register(r'client', bank_views.ClientViewSet)
 router.register(r'product', bank_views.ProductViewSet)
 router.register(r'account', bank_views.AccountViewSet)
 
+from django.views.generic.base import RedirectView
+
+    
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url('debug/', RedirectView.as_view(url='google.com', permanent=False), name='index'),
 ]

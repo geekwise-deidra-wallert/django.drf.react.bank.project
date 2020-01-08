@@ -1,14 +1,19 @@
 from django.db import models
 import uuid
-from django.contrib.auth import authenticate
 
+from django.contrib.auth import authenticate, login
 
-# class Auth (models.Model):
-#     user = authenticate(username='', password='')
-#     if user is not None:
-
-#     else:
-
+def my_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        
+        ...
+    else:
+        # Return an 'invalid login' error message.
+        ...
     
 
 class Branch (models.Model):
