@@ -17,7 +17,7 @@ export default class ModalBranch extends Component {
       super(props)
       this.state = {
         
-      activeItem: this.props.activeItem
+        activeItem: this.props.activeItem
       }
   }
 
@@ -31,16 +31,10 @@ export default class ModalBranch extends Component {
     this.setState({ activeItem })
   } 
 
-  // on_save = event => {
-  //   console.log( event )
-  // }
-
-  // handle_submit = event => {
-  //       console.log( event )
-  // }
-
   render() {
+
     const { toggle, onSave } = this.props;
+    
     return (
     <Modal isOpen={true} toggle={toggle}>
         <ModalHeader toggle={toggle}> Branch Item </ModalHeader>
@@ -53,7 +47,6 @@ export default class ModalBranch extends Component {
                 type="text"
                 name="branch_name"
                 value={ this.state.activeItem.branch_name }
-                // value={this.state.activeItem.branch_name}
                 onChange={this.handleChange}
                 placeholder="branch:"
             />

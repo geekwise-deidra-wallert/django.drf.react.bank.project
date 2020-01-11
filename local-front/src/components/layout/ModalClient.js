@@ -20,9 +20,9 @@ export default class ClientModal extends Component {
         activeClient: this.props.activeClient,
         branch_id: this.props.branch_id,
         branch_value: "",
-
       };
   }
+  
   handleChange = event => {
      let { name, value } = event.target;
       if (event.target.type === "checkbox") {
@@ -37,10 +37,8 @@ export default class ClientModal extends Component {
     this.setState({branch_value:e.target.value})
     let activeClient = this.state.activeClient;
     activeClient.connect_to_branch = e.target.value;
-    this.setState({ activeClient });
-    
+    this.setState({ activeClient }); 
   }
-
 
   render() {
     const { toggle, onSave } = this.props;
@@ -76,7 +74,6 @@ export default class ClientModal extends Component {
                 <select onChange={this.branchInput} value={"branch_value"} name="connect_to_branch">
                 {this.state.branch_id.map((bValue, index) => {
                     return <option key={index} value={bValue.url}>{bValue.branch_name}</option>
-
                   })
                 }
                 </select>

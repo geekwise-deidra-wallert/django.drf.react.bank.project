@@ -6,19 +6,15 @@ class Client extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
       activeClient: {
                     client_name: "",
                     client_email: "",
                     connect_to_branch: ""
-
       },
       clients: [],
       branch_id: [],
       branchName: '',
-      // branchActive: false,
-      // clientActive: true,
-      // productActive: false,
-      // accountActive: false
     };
   }
 
@@ -32,18 +28,6 @@ class Client extends Component {
       .then(res => this.setState({ branch_id: res.data }))
       .catch(err => console.log(err));
   }
-
-  // displayClient = status => {
-  //   if (status) {
-  //     return this.setState({
-  //       branchActive: false,
-  //       clientActive: true,
-  //       productActive: false,
-  //       accountActive: false
-  //     });
-  //   }
-  //   return this.setState({ clientActive: false });
-  // };
 
   handleSubmit() {
     axios
@@ -89,6 +73,7 @@ class Client extends Component {
             onClick={() => this.handleDelete(client)} className="btn btn-danger col">
             Delete{" "}
         </button>
+
       </div>
     ));
   }
@@ -101,9 +86,11 @@ class Client extends Component {
 
   handleChange = e => {
     let { name, value } = e.target;
+
     if (e.target.type === "checkbox") {
       value = e.target.checked;
     }
+
     const activeClient = { ...this.state.activeClient, [name]: value };
     this.setState({ activeClient });
   };
@@ -139,15 +126,16 @@ class Client extends Component {
   };
 
   render() {
-    // console.log(this.state.clients);
     return (
       <div className="branch-box-style offset-2 col-8 justify-content-center">
+
           {/* {this.renderClients()} */}
         <button onClick={this.createClient} className="btn btn-dark btn-lg col-4">
           + New Client
         </button>
 
         <ul>{this.renderClients()}</ul>
+        
         {this.state.modal ? (
           <Modal
             branch_id={this.state.branch_id}

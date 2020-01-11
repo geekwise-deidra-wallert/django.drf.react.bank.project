@@ -8,12 +8,42 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #282c34;
 }
+/* Header.js Styles */
+.headerStyle{
+  text-align: center;
+  background: #4b4764;
+  height: 90px;
+}
+
+.linkStyle {
+  color: #fff;
+  /* padding: 0px; */
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.form-top-padding{
+  margin-top: 20px;
+}
+
+.login-register{
+  color: #fff;
+  padding: 5px;
+  font-size: 10px;
+}
+
+.register-banner{
+  background-color: #4b4764;
+  border-radius: .25rem;
+  padding: 10px;
+  color: #fff;
+}
+/* End Header.js Styles */
+
 .todo-title {
   cursor: pointer;
 }
-.completed-todo {
-  text-decoration: line-through;
-}
+
 .tab-list > span {
   padding: 5px 8px;
   border: 1px solid #282c34;
