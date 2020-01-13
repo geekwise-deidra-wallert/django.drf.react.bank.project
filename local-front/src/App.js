@@ -18,7 +18,7 @@ class App extends Component {
             <Route path="/branches" component={Branches}/>
             <Route path="/clients" component={Clients}/>
             <Route path="/login" component={Login}/>
-            <Route path="/register" component={Register}/>
+            {/* <Route path="/register" component={Register}/> */}
         </div>    
       </Router> 
     );
