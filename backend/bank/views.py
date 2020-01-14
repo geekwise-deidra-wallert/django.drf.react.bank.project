@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User, Groups
+from django.contrib.auth.models import User, Group
 from bank.models import Branch, Client, Product, Account
 from rest_framework import viewsets
 from bank.serializers import BranchSerializer, ClientSerializer, ProductSerializer, AccountSerializer, UserSerializer
