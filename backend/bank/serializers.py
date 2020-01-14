@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Groups
 from rest_framework import serializers
 from bank.models import Branch, Client, Product, Account
 
@@ -56,11 +56,11 @@ class UserSerializer( serializers.HyperlinkedModelSerializer ):
             'groups'
         ]
 
-# class GroupSerializer( serializers.HyperlinkedModelSerializer ):
-#     class Meta:
-#         model = Group
-#         fields = [
-#             'id',
-#             'url',
-#             'name',
-#         ]
+class GroupSerializer( serializers.HyperlinkedModelSerializer ):
+    class Meta:
+        model = Group
+        fields = [
+            'id',
+            'url',
+            'name',
+        ]
