@@ -6,16 +6,13 @@ class Branch extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
       activeItem: {
                   branch_name: "",
                   location_city: "",
                   location_address: ""
       },
       branches: [],
-      // branchActive: true,
-      // clientActive: false,
-      // productActive: false,
-      // accountActive: false
     };
   }
 
@@ -25,18 +22,6 @@ class Branch extends Component {
       .then(res => this.setState({ branches: res.data }))
       .catch(err => console.log(err));
   }
-
-  // displayBranch = status => {
-  //   if (status) {
-  //     return this.setState({
-  //       branchActive: true,
-  //       clientActive: false,
-  //       productActive: false,
-  //       accountActive: false
-  //     });
-  //   }
-  //   return this.setState({ branchActive: false});
-  // }
 
   handleSubmit() {
     axios
@@ -62,7 +47,9 @@ class Branch extends Component {
           {item.location_city}
           {item.location_address}
         </li>
+
         <div className="col-lg-4 col-md-4 offset-md-1 col-sm-2">
+
           <button
             onClick={() => this.editItem(item)} className="btn btn-secondary mr-2">
             Edit{" "}
@@ -72,6 +59,7 @@ class Branch extends Component {
             onClick={() => this.handleDelete(item)}className="btn btn-danger">
             Delete{" "}
           </button>
+
         </div>
 
       </div>
@@ -86,9 +74,11 @@ class Branch extends Component {
 
   handleChange = e => {
     let { name, value } = e.target;
+
     if (e.target.type === "checkbox") {
       value = e.target.checked;
     }
+
     const activeItem = { ...this.state.activeItem, [name]: value };
     this.setState({ activeItem });
   };
@@ -123,7 +113,6 @@ class Branch extends Component {
   };
 
   render() {
-    console.log(this.state.branches);
     return (
       <div className="branch-box-style offset-2 col-8 col-sm-10 offset-sm-1 justify-content-center">
 
@@ -132,6 +121,7 @@ class Branch extends Component {
         </button>
 
         <ul>{this.renderBranches()}</ul>
+
         {this.state.modal ? (
           <Modal
             activeItem={this.state.activeItem}
@@ -144,6 +134,4 @@ class Branch extends Component {
     );
   }
 }
-
-
 export default Branch
