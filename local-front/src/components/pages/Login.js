@@ -29,63 +29,8 @@ export class Login extends Component {
         this.setState({password: ''});
     }
 
-    // login (username, password){
-
-    //     const config = {
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }
-
-    //     const body = JSON.stringify({username, password});
-    //     console.log(body, "ITS A BODY");
-
-    //     axios
-    //         .post('https://bank-backend-deidra.herokuapp.com/users/api/auth/login',body, config)
-    //         .then(response => {
-                
-    //         })
-    // }
-
-    // onSubmit = event =>{
-
-    //     event.preventDefault();
-    //     // this.props.login
-    //     console.log(this.state.username,this.state.password, "IT WORKED");
-
-    //     this.login(this.state.username, this.state.password);
-    // }
-
-    // onChange = event =>{
-        
-    //     this.setState({[event.target.name]: event.target.value});
-    // }
-
-    // render(state, context) {
-
-    //     const self = this
-    //     console.log(`state: ${state}`)
-    //     console.log(`context: ${context}`)
-    //     console.log(`this: ${this}`)
-
-    //     console.log(this)
-    //     return(
-    //         true    
-    //     )
-    // }
-
-    
     render() {
-
-        
         console.log ( this )
-
-        // this.context = {
-        //     auth : {
-        //         isAuthenticated : false,
-        //     }
-        // }
-
         console.log('THIS IS RENDER: ' + this.context.auth.isAuthenticated)
         if(this.context.auth.isAuthenticated){
             return <Redirect to="/" />

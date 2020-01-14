@@ -5,7 +5,6 @@ import { AuthContext } from '../../context/AuthProvider'
 
 
 function Header(){
-
     const { auth } = useContext(AuthContext)
 
     if(auth.isAuthenticated) {
@@ -26,7 +25,6 @@ function Header(){
     )
 
     return(
-
         <header className='headerStyle'>
             <div className='row d-flex justify-content-end'>
                 {auth.isAuthenticated ? userLinks : guestLinks}
