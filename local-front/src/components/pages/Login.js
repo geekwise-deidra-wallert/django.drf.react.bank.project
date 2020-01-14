@@ -24,8 +24,9 @@ export class Login extends Component {
 
     formSubmit = (event) => {
         event.preventDefault();
+        console.log(this.state)
         axios
-            .post('https://bank-backend-deidra.herokuapp.com/users/api/auth/login', this.state.activeItem)
+            .post('https://bank-backend-deidra.herokuapp.com/users/api/auth/login', this.state)
             .then(response => console.log(response.data))
             .catch(error => console.log(error));
         console.log('LOOK HERE FORM SUBMIT: ' + this.state.username + ' ' + this.state.password)
@@ -36,7 +37,7 @@ export class Login extends Component {
 
     render() {
         console.log ( this )
-        console.log('THIS IS RENDER: ' + this.context.auth.isAuthenticated)
+        // console.log('THIS IS RENDER: ' + this.context.auth.isAuthenticated)
         if(this.context.auth.isAuthenticated){
             return <Redirect to="/" />
         }
