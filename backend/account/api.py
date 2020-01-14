@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from knox.models import AuthToken
-from .serializers import UserSerializer, RegisterSerializer, LoginSerializer, GroupSerializer
+from .serializers import UserSerializer, RegisterSerializer, LoginSerializer, GroupSerializer, PermissionSerializer
 
 class GroupAPI(generics.GenericAPIView):
     serializer_class = GroupSerializer
@@ -63,7 +63,7 @@ class PermissionAPI(generics.RetrieveAPIView):
         serializer = PermissionSerializer(data)
 
         return Response(data)
-        
+
 # All Permissions API
 class AllPermissionsAPI(generics.RetrieveAPIView):
     serializer_class = PermissionSerializer
