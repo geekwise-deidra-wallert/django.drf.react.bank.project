@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import { login } from '../../actions/authActions';
 import { Redirect } from 'react-router-dom';
 import {AuthContext} from '../../context/AuthProvider'
@@ -23,6 +24,10 @@ export class Login extends Component {
 
     formSubmit = (event) => {
         event.preventDefault();
+        axios
+            .post('https://bank-backend-deidra.herokuapp.com/users/api/auth/login', this.state.activeItem)
+            .then(response => console.log(response.data))
+            .catch(error => console.log(error));
         console.log('LOOK HERE FORM SUBMIT: ' + this.state.username + ' ' + this.state.password)
         login(this.state.username, this.state.password, this.context.dispatch);
         this.setState({username: ''});
