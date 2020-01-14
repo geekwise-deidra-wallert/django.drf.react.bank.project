@@ -25,7 +25,23 @@ export class Register extends Component {
         this.setState({password: passwordText.target.value});
     }
 
+    formSubmit = (event) => {
+        event.preventDefault();
+        const {email, password, username} = this.state
+        if (username === '' || password === ''){
+            this.setState({message: 'Name and Password must be filled out.'})
+        } else {
+            this.setState({message: ''})
+            const newUser = {username, email, password};
+            register(newUser, this.context.dispatch);
+            this.setState({username: ''});
+            this.setState({email: ''});
+            this.setState({password: ''});
+        }
+    }
+
     render() {
+        console.log ( this )
         if(this.context.auth.isAuthenticated){
             return <Redirect to="/" />
         }
