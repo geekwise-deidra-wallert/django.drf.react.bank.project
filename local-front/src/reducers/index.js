@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import customers from './customers';
-import auth from './auth';
+// import { combineReducers } from 'redux';
+// import clients from './Clients';
+// import auth from './auth';
 
-export default combineReducers({
-    customers,
-    auth,
-});
+// export default combineReducers({
+//     clients,
+//     auth,
+// });

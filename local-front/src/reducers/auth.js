@@ -54,7 +54,7 @@ export default function (state = initialState, action) {
         isLoading: false
       };
 
-    deafult:
+    default:
       return state;
   }
 }

@@ -15,7 +15,6 @@ const authReducer = (state, action) => {
       return {
         ...state,
         isLoading: true,
-        permissions: JSON.parse(localStorage.getItem("permissions"))
       };
     case USER_LOADED:
       console.log("Loaded user: " + Object.keys(action.payload));
@@ -29,10 +28,6 @@ const authReducer = (state, action) => {
     case REGISTER_SUCCESS:
       console.log("Logged-in user: " + action.payload.permissions);
       localStorage.setItem("token", action.payload.token);
-      localStorage.setItem(
-        "permissions",
-        JSON.stringify(action.payload.permissions)
-      );
       return {
         ...state,
         ...action.payload,
@@ -45,11 +40,9 @@ const authReducer = (state, action) => {
     case REGISTER_FAIL:
       console.log("Logged-out user");
       localStorage.removeItem("token");
-      localStorage.removeItem("permissions");
       return {
         ...state,
         token: null,
-        permissions: null,
         user: null,
         isAuthenticated: false,
         isLoading: false
