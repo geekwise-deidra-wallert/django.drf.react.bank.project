@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User, Permission
+from django.contrib.auth.models import User, Group, Permission
 from django.contrib.auth import authenticate
 
 #Permissions serializer
@@ -58,5 +58,5 @@ class LoginSerializer(serializers.Serializer):
         if user and user.is_active:
 
             return user
-            
+
         raise serializers.ValidationError("Incorrect Credentials")
