@@ -3,7 +3,6 @@ import axios from 'axios'
 import { login } from '../../actions/authActions';
 import { Redirect } from 'react-router-dom';
 import {AuthContext} from '../../context/AuthProvider'
-// import axios from 'axios';
 
 export class Login extends Component {
 

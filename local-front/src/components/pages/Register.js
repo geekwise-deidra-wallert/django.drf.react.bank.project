@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import { register } from '../../actions/authActions';
 import { Redirect } from 'react-router-dom';
 import {AuthContext} from '../../context/AuthProvider'
@@ -11,7 +12,10 @@ export class Register extends Component {
         username: '',
         email: '',
         password: '',
+        groups: [],
     }
+
+    Groups = []
 
     userInput = (nameText) => {
         this.setState({username: nameText.target.value});
@@ -25,8 +29,34 @@ export class Register extends Component {
         this.setState({password: passwordText.target.value});
     }
 
+    groupInput = (groupSelect) => {
+        this.setState({groups: groupSelect.target.value});
+    }
+    
+    componentDidMount(){
+        this.getGroups();
+    }
+
+    getGroups(){
+        axios
+            .get('https://bank-backend-deidra.herokuapp.com/users/api/auth/groups')
+            .then(response => this.setState({Groups: response.data.Groups}))
+            .catch(error => console.log(error))
+    }
+
+    renderGroupOptions(){
+        console.log(this.state.Groups)
+        return this.state.Groups.map(group => (
+        <option value={`${group.id}`}>{group.name}</option>
+        ))
+    }
+
     formSubmit = (event) => {
         event.preventDefault();
+        axios
+            .post('https://bank-backend-deidra.herokuapp.com/users/api/auth/register', this.state)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
         const {email, password, username} = this.state
         if (username === '' || password === ''){
             this.setState({message: 'Name and Password must be filled out.'})
@@ -65,6 +95,11 @@ export class Register extends Component {
                     <div className="form-group col">
                         <label htmlFor="exampleInputPassword1">Password</label>
                         <input onChange={this.passwordInput} value={password} type="password" className="form-control" id="exampleInputPassword1"/>
+                    </div>
+                    <div>
+                    <select name="groups" value={this.state.groups} onChange={this.groupInput}>
+                    {this.renderGroupOptions()}
+                  </select> 
                     </div>
                     <button type="submit" className="btn btn-primary col-3 align-self-center">Submit</button>
                 </div>
