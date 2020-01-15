@@ -40,7 +40,7 @@ export class Register extends Component {
     getGroups(){
         axios
             .get('https://bank-backend-deidra.herokuapp.com/users/api/auth/groups')
-            .then(response => this.setState({Groups: response.data.Groups}))
+            .then(response => console.log(response))
             .catch(error => console.log(error))
     }
 
