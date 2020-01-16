@@ -2,25 +2,6 @@ from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from bank.models import Branch, Client, Product, Account
 
-class UserSerializer( serializers.HyperlinkedModelSerializer ):
-    class Meta:
-        model = User
-        fields = [
-            'id',
-            'url',
-            'username',
-            'email',
-            'groups'
-        ]
-
-class GroupSerializer( serializers.HyperlinkedModelSerializer ):
-    class Meta:
-        model = Group
-        fields = [
-            'id',
-            'url',
-            'name',
-        ]
 class BranchSerializer( serializers.HyperlinkedModelSerializer ):
     class Meta:
         model = Branch
@@ -29,7 +10,7 @@ class BranchSerializer( serializers.HyperlinkedModelSerializer ):
             'url',
             'branch_name',
             'location_city',
-            'location_id',
+            'location_address',
         ]
 
 class ClientSerializer( serializers.HyperlinkedModelSerializer ):
@@ -49,8 +30,7 @@ class ProductSerializer( serializers.HyperlinkedModelSerializer ):
             'id',
             'url',
             'default_account_types',
-            'secondary_account_types',
-            'credit_cards',
+            'connect_to_client'
         ]
 class AccountSerializer( serializers.HyperlinkedModelSerializer ):
     class Meta:
@@ -59,6 +39,27 @@ class AccountSerializer( serializers.HyperlinkedModelSerializer ):
             'id',
             'connect_to_products',
             'connect_to_client',
-            'account_current_balance',
             'account_id'
+        ]
+
+
+
+class UserSerializer( serializers.HyperlinkedModelSerializer ):
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'url',
+            'username',
+            'email',
+            'groups'
+        ]
+
+class GroupSerializer( serializers.HyperlinkedModelSerializer ):
+    class Meta:
+        model = Group
+        fields = [
+            'id',
+            'url',
+            'name',
         ]

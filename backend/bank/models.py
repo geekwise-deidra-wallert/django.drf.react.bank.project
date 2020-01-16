@@ -1,13 +1,29 @@
 from django.db import models
 import uuid
 
+from django.contrib.auth import authenticate, login
+
+def my_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        
+        ...
+    else:
+        # Return an 'invalid login' error message.
+        ...
+    
+
 class Branch (models.Model):
     class Meta:
         verbose_name_plural = 'Branches'
-
-    branch_name = models.CharField(max_length=25)
-    location_city = models.CharField(max_length=50)
-    location_id = str(uuid.uuid4)
+        
+    branch_name = models.CharField(max_length=100)
+    location_city = models.CharField(max_length=100)
+    location_address = models.CharField(max_length=100)
+    location_id = str(uuid.uuid4())
 
     def __str__(self):
         return (
@@ -17,11 +33,12 @@ class Branch (models.Model):
 class Client (models.Model):
 
     client_name = models.CharField(
-        max_length=50,
+        max_length=100,
         default=''
         )
+        
     client_email = models.CharField(
-        max_length=50,
+        max_length=100,
         default=''
         )
     
@@ -32,7 +49,7 @@ class Client (models.Model):
 
     def __str__(self):
         return(
-            f"{self.client_name} | {self.branch_name}"
+            f"{self.client_name} | {self.connect_to_branch}"
         )
 
 class Product(models.Model):
@@ -40,34 +57,13 @@ class Product(models.Model):
     default_account_types = (
         ('checking', 'CHECKING'),
         ('savings', 'SAVINGS'),
-        ('none', 'NONE'),
+        ('credit', 'CREDIT'),
+        ('debit', 'DEBIT')
     )
     default_account_params = models.CharField(
         max_length = 8,
         choices = default_account_types,
         default = default_account_types[0]
-    )
-
-    secondary_account_types = (
-        ('checking', 'CHECKING'),
-        ('savings', 'SAVINGS'),
-        ('none', 'NONE'),
-    )
-    secondary_account_params = models.CharField(
-        max_length = 8,
-        choices = secondary_account_types,
-        default = secondary_account_types[0]
-    )
-    credit_cards = (
-        ('gold','GOLD'),
-        ('silver','SILVER'),
-        ('platinum','PLATINUM'),
-        ('none', 'NONE')
-    )
-    credit_card_params = models.CharField(
-        max_length = 8,
-        choices = credit_cards,
-        default = credit_cards[0]
     )
     connect_to_client = models.ForeignKey(
         Client,
@@ -76,7 +72,7 @@ class Product(models.Model):
 
     def __str__(self):
         return (
-            f"{self.client_name} | {self.default_account_params} | {self.secondary_account_params} | {self.credit_card_params}"
+            f"{self.connect_to_client} | {self.default_account_params}"
         )
 
 class Account (models.Model):
@@ -94,5 +90,5 @@ class Account (models.Model):
 
     def __str__ (self):
         return (
-            f"{self.client_name} | {self.account_id}| {self.default_account_params} | {self.secondary_account_params}"
+            f"{self.connect_to_client} | {self.account_id}| {self.default_account_params}"
         )
