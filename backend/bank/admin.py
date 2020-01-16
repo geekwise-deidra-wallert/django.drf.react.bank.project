@@ -7,7 +7,6 @@ admin.site.register(
     Account,
     Product)
 )
-
 # class BranchAdmin(admin.ModelAdmin):
 #     list_display = ('branch_name', 'location_city')
 # admin.site.register(Branch, BranchAdmin)

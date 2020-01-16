@@ -19,7 +19,7 @@ def my_view(request):
 class Branch (models.Model):
     class Meta:
         verbose_name_plural = 'Branches'
-
+        
     branch_name = models.CharField(max_length=100)
     location_city = models.CharField(max_length=100)
     location_address = models.CharField(max_length=100)

@@ -11,7 +11,6 @@ class BranchSerializer( serializers.HyperlinkedModelSerializer ):
             'branch_name',
             'location_city',
             'location_address',
-            'location_id',
         ]
 
 class ClientSerializer( serializers.HyperlinkedModelSerializer ):
