@@ -10,9 +10,8 @@ body {
 }
 /* Header.js Styles */
 .headerStyle{
-  text-align: center;
-  background: #4b4764;
-  height: 90px;
+  /* text-align: center; */
+  padding: 10px;
 }
 
 .linkStyle {
@@ -30,6 +29,7 @@ body {
   color: #fff;
   padding: 5px;
   font-size: 10px;
+  font-weight: bold;
 }
 
 .register-banner{
@@ -38,6 +38,12 @@ body {
   padding: 10px;
   color: #fff;
 }
+
+.name_font{
+  color: white;
+  font-weight: bold;
+}
+
 /* End Header.js Styles */
 
 .todo-title {
@@ -58,7 +64,9 @@ body {
 
 .branch-box-style{
   margin-top: 20px;
-  border: thin solid black;
+  border: thin solid #888888;
+  box-shadow: 5px 10px 8px #888888;
+  border-radius: 5px;;
   text-align: center;
   padding: 20px;
   font-weight: bold;

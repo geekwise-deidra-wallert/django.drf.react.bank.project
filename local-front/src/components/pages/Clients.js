@@ -59,20 +59,22 @@ class Client extends Component {
       <div key={client.id} className="li-div row">
     
         <li key={client.id}  className="li-render col-8">
-          {client.client_name}
-          {client.client_email}
-          {client.connect_to_branch}
+         Name: {client.client_name} <br/>
+         Email: {client.client_email} <br/>
+         Branch: {client.connect_to_branch}
         </li>
 
-        <button 
-            onClick={() => this.editItem(client)} className="btn btn-secondary mr-2 col">
-            Edit{" "}
-        </button>
+        <div className="col-lg-3 col-md-4 offset-md-1 col-sm-2">
+          <button 
+              onClick={() => this.editItem(client)} className="btn btn-secondary mr-2">
+              Edit{" "}
+          </button>
 
-        <button
-            onClick={() => this.handleDelete(client)} className="btn btn-danger col">
-            Delete{" "}
-        </button>
+          <button
+              onClick={() => this.handleDelete(client)} className="btn btn-danger">
+              Delete{" "}
+          </button>
+        </div>
 
       </div>
     ));
@@ -127,7 +129,7 @@ class Client extends Component {
 
   render() {
     return (
-      <div className="branch-box-style offset-2 col-8 justify-content-center">
+      <div className="branch-box-style offset-2 col-8 col-sm-6 offset-sm-3 justify-content-center">
 
           {/* {this.renderClients()} */}
         <button onClick={this.createClient} className="btn btn-dark btn-lg col-4">

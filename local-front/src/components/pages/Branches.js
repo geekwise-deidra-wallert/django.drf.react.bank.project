@@ -43,9 +43,9 @@ class Branch extends Component {
       <div key={item.id} className="li-div row">
 
         <li key={item.id} className="li-render col-lg-6 col-md-7 col-sm-4">
-          {item.branch_name}
-          {item.location_city}
-          {item.location_address}
+          Branch Name: {item.branch_name} <br/>
+          City: {item.location_city} <br/>
+          Address: {item.location_address}
         </li>
 
         <div className="col-lg-4 col-md-4 offset-md-1 col-sm-2">
@@ -56,7 +56,7 @@ class Branch extends Component {
           </button>
 
           <button
-            onClick={() => this.handleDelete(item)}className="btn btn-danger">
+            onClick={() => this.handleDelete(item)} className="btn btn-danger">
             Delete{" "}
           </button>
 
@@ -114,7 +114,7 @@ class Branch extends Component {
 
   render() {
     return (
-      <div className="branch-box-style offset-2 col-8 col-sm-10 offset-sm-1 justify-content-center">
+      <div className="branch-box-style offset-2 col-8 col-sm-6 offset-sm-3 justify-content-center">
 
         <button onClick={this.createItem} className="btn btn-dark btn-lg col-4">
           + New Branch
