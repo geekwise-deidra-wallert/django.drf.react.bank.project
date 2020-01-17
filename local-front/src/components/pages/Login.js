@@ -38,7 +38,7 @@ export class Login extends Component {
         console.log ( this )
         // console.log('THIS IS RENDER: ' + this.context.auth.isAuthenticated)
         if(this.context.auth.isAuthenticated){
-            return <Redirect to="/" />
+            return <Redirect to="/dashboard" />
         }
         const { username, password} = this.state;
         

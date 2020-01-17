@@ -93,3 +93,11 @@ body {
   list-style-type: none;
   text-align: left;
 }
+
+.purple_container{
+  background-color: #4b4764
+}
+
+.filler{
+  height: 40px;
+}
