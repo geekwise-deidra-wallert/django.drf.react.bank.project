@@ -9,4 +9,5 @@ Bank project using Django and React deployed via Heroku
 ## Admin Login
 
 Username: admin
+<br>
 Password: admin
