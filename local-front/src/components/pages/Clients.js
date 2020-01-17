@@ -66,7 +66,7 @@ class Client extends Component {
 
         <div className="col-lg-3 col-md-4 offset-md-1 col-sm-2">
           <button 
-              onClick={() => this.editItem(client)} className="btn btn-secondary mr-2">
+              onClick={() => this.editClient(client)} className="btn btn-secondary mr-2">
               Edit{" "}
           </button>
 
