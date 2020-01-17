@@ -10,19 +10,14 @@ body {
 }
 /* Header.js Styles */
 .headerStyle{
-  /* text-align: center; */
+  background-color: #4b4764;
   padding: 10px;
 }
 
 .linkStyle {
   color: #fff;
-  /* padding: 0px; */
   font-size: 15px;
   font-weight: bold;
-}
-
-.form-top-padding{
-  margin-top: 20px;
 }
 
 .login-register{
@@ -32,7 +27,14 @@ body {
   font-weight: bold;
 }
 
-.register-banner{
+.form-top-padding{
+  margin-top: 60px;
+  border: thin solid #888888;
+  box-shadow: 5px 10px 8px #888888;
+  border-radius: 5px;;
+}
+
+.login_register_banner{
   background-color: #4b4764;
   border-radius: .25rem;
   padding: 10px;
@@ -45,6 +47,10 @@ body {
 }
 
 /* End Header.js Styles */
+
+.padding_20{
+  padding: 20px;
+}
 
 .todo-title {
   cursor: pointer;
