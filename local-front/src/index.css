@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+}
+/* Header.js Styles */
+.headerStyle{
+  background-color: #4b4764;
+  padding: 10px;
+}
+
+.linkStyle {
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.login-register{
+  color: #fff;
+  padding: 5px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.form-top-padding{
+  margin-top: 60px;
+  border: thin solid #888888;
+  box-shadow: 5px 10px 8px #888888;
+  border-radius: 5px;;
+}
+
+.login_register_banner{
+  background-color: #4b4764;
+  border-radius: .25rem;
+  padding: 10px;
+  color: #fff;
+}
+
+.name_font{
+  color: white;
+  font-weight: bold;
+}
+
+/* End Header.js Styles */
+
+.padding_20{
+  padding: 20px;
+}
+
+.todo-title {
+  cursor: pointer;
+}
+
+.tab-list > span {
+  padding: 5px 8px;
+  border: 1px solid #282c34;
+  border-radius: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.tab-list > span.active {
+  background-color: #282c34;
+  color: #ffffff;
+}
+
+.branch-box-style{
+  margin-top: 20px;
+  border: thin solid #888888;
+  box-shadow: 5px 10px 8px #888888;
+  border-radius: 5px;;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.new-branch-btn{
+  border: thin solid black;
+}
+
+.li-div{
+  border-bottom: thin solid black;
+  padding: 10px;
+}
+
+.li-render{
+  font-size: 15px;
+  color: black;
+  list-style-type: none;
+  text-align: left;
+}
+
+.purple_container{
+  background-color: #4b4764
+}
+
+.filler{
+  height: 40px;
+}
