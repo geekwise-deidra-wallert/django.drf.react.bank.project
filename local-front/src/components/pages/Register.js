@@ -54,7 +54,7 @@ export class Register extends Component {
     formSubmit = (event) => {
         event.preventDefault();
         axios
-            .post('https://bank-backend-deidra.herokuapp.com/users/api/auth/register', this.state)
+            .post('https://bank-backend-deidra.herokuapp.com/auth/register', this.state)
             .then(res => console.log(res.data))
             .catch(err => console.log(err));
         const {email, password, username} = this.state

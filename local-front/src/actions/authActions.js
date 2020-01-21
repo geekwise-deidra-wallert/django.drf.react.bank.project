@@ -14,7 +14,7 @@ import { object } from "prop-types";
 
 export const loadUser = dispatch => {
     dispatch({type: USER_LOADING});
-    axios.get('https://bank-backend-deidra.herokuapp.com/users/api/auth/user', tokenConfig())
+    axios.get('https://bank-backend-deidra.herokuapp.com/auth/user', tokenConfig())
     .then(response => {
         console.log('USER LOADING:' + object.keys(response.data))
         dispatch({
@@ -35,7 +35,7 @@ export const login = (username, password, dispatch) => {
     }
     const body = JSON.stringify({username, password});
     axios
-        .post('https://bank-backend-deidra.herokuapp.com/users/api/auth/login', body, config)
+        .post('https://bank-backend-deidra.herokuapp.com/auth/login', body, config)
         .then(response => {
             dispatch({
                 type: LOGIN_SUCCESS,
@@ -56,7 +56,7 @@ export const register = ({username, email, password}, dispatch) => {
 
     const body = JSON.stringify({username, email, password});
     axios
-        .post('https://bank-backend-deidra.herokuapp.com/users/api/auth/register', body, config)
+        .post('https://bank-backend-deidra.herokuapp.com/auth/register', body, config)
         .then(response => {
             dispatch({
                 type: REGISTER_SUCCESS,
@@ -69,7 +69,7 @@ export const register = ({username, email, password}, dispatch) => {
 }
 
 export const logout = dispatch => {
-    axios.post('https://bank-backend-deidra.herokuapp.com/users/api/auth/logout', null, tokenConfig())
+    axios.post('https://bank-backend-deidra.herokuapp.com/auth/logout', null, tokenConfig())
     .then(res => {
         dispatch({
             type: LOGOUT_SUCCESS,

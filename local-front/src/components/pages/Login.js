@@ -25,7 +25,7 @@ export class Login extends Component {
         event.preventDefault();
         console.log(this.state)
         axios
-            .post('https://bank-backend-deidra.herokuapp.com/users/api/auth/login', this.state)
+            .post('https://bank-backend-deidra.herokuapp.com/auth/login', this.state)
             .then(response => console.log(response.data))
             .catch(error => console.log(error));
         console.log('LOOK HERE FORM SUBMIT: ' + this.state.username + ' ' + this.state.password)
