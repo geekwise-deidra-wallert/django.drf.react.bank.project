@@ -20,6 +20,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # url('debug/', RedirectView.as_view(url='google.com', permanent=False), name='index'),
-    path('users/', include('account.urls')),
-    path('groups/', include('account.urls')),
+    path('', include('account.urls')),
+    # path('groups/', include('account.urls')),
 ]

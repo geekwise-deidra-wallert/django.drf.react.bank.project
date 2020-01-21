@@ -62,8 +62,8 @@ class LoginSerializer(serializers.Serializer):
         raise serializers.ValidationError("Incorrect Credentials")
 
 class PasswordSerializer(serializers.Serializer):
-    username = serializers.Charfield()
-    password = serializers.Charfield()
+    username = serializers.CharField()
+    password = serializers.CharField()
 
     def create(self, validated_data):
         pass
