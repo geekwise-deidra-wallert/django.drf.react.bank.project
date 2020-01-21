@@ -60,3 +60,33 @@ class LoginSerializer(serializers.Serializer):
             return user
 
         raise serializers.ValidationError("Incorrect Credentials")
+
+class PasswordSerializer(serializers.Serializer):
+    username = serializers.Charfield()
+    password = serializers.Charfield()
+
+    def create(self, validated_data):
+        pass
+    def update(self, instance, validated_data):
+        pass
+    def validate(self, data):
+        if data["username"] == data["password"]:
+            raise serializers.ValidationError("Username and new password should be different")
+        
+        return data
+
+    def validated_password(self,value):
+        if len(value) <8 or len(value) > 16:
+            raise serializers.ValidationError("It should be between 8 and 16 characters long")
+        if not any(x.isupper() for x in value):
+            raise serializers.ValidationError("It should have at least one upper case alphabet")
+        if not any(x.islower() for x in value):
+            raise serializers.ValidationError("It should have at least one lower case alphabet")
+        if not any(x.isdigit() for x in value):
+            raise serializers.ValidationError("It should have at least one number")
+        valid_special_characters = {'@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')',
+                                    '<', '>', '?', '/', '|', '{', '}', '~', ':'}
+        if not any(x in valid_special_characters for x in value):
+            raise serializers.ValidationError("It should have at least one special character")
+
+        return value

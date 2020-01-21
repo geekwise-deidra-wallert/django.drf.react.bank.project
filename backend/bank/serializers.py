@@ -12,7 +12,6 @@ class BranchSerializer( serializers.HyperlinkedModelSerializer ):
             'location_city',
             'location_address',
         ]
-
 class ClientSerializer( serializers.HyperlinkedModelSerializer ):
     class Meta:
         model = Client
@@ -41,9 +40,6 @@ class AccountSerializer( serializers.HyperlinkedModelSerializer ):
             'connect_to_client',
             'account_id'
         ]
-
-
-
 class UserSerializer( serializers.HyperlinkedModelSerializer ):
     class Meta:
         model = User
@@ -54,7 +50,6 @@ class UserSerializer( serializers.HyperlinkedModelSerializer ):
             'email',
             'groups'
         ]
-
 class GroupSerializer( serializers.HyperlinkedModelSerializer ):
     class Meta:
         model = Group

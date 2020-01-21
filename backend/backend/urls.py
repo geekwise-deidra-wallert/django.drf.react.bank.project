@@ -15,8 +15,6 @@ router.register(r'account', bank_views.AccountViewSet)
 
 from django.views.generic.base import RedirectView
 
-    
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
