@@ -3,7 +3,7 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./components/layout/PrivateRouter";
 
 import Header from "./components/layout/Header";
