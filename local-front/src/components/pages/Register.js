@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 import axios from 'axios'
-import { register } from '../../actions/authActions';
-import { Redirect } from 'react-router-dom';
-import {AuthContext} from '../../context/AuthProvider'
+import { register } from '../../actions/auth';
+
 
 export class Register extends Component {
 
-    static contextType = AuthContext
+    static propTypes = {
+        register: PropTypes.func.isRequired,
+        isAuthenticated: PropTypes.bool
+    
+      }
 
     state = {
         username: '',
@@ -16,7 +22,6 @@ export class Register extends Component {
     }
 
     // Groups = []
-
     userInput = (nameText) => {
         this.setState({username: nameText.target.value});
     }
@@ -110,4 +115,8 @@ export class Register extends Component {
     }
 }
 
-export default Register
+const mapStateToProps = state => ({
+    isAuthenticated : state.auth.isAuthenticated
+  })
+  
+  export default connect(mapStateToProps, {register})(Register);

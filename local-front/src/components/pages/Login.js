@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import { login } from '../../actions/authActions';
 import { Redirect } from 'react-router-dom';
-import {AuthContext} from '../../context/AuthProvider'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import axios from 'axios'
+import { login } from '../../actions/auth';
 
 export class Login extends Component {
 
-    static contextType = AuthContext
+    static propTypes = {
+        login: PropTypes.func.isRequired,
+        isAuthenticated: PropTypes.bool
+    
+      }
 
     state = {
         username: '',
@@ -37,7 +42,7 @@ export class Login extends Component {
     render() {
         console.log ( this )
         // console.log('THIS IS RENDER: ' + this.context.auth.isAuthenticated)
-        if(this.context.auth.isAuthenticated){
+        if(this.isAuthenticated){
             return <Redirect to="/dashboard" />
         }
         const { username, password} = this.state;
@@ -66,5 +71,8 @@ export class Login extends Component {
     }
     
 }
-
-export default Login
+const mapStateToProps = state => ({
+    isAuthenticated : state.auth.isAuthenticated
+  })
+  
+  export default connect(mapStateToProps, {login})(Login);
