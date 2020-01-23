@@ -14,9 +14,9 @@ class Header extends Component{
 
     render(){
         const { isAuthenticated, user } = this.props.auth;
-        if(isAuthenticated) {
-            console.log('User that logged in: ' + this.user.username)
-        }
+        // if(isAuthenticated) {
+        //     console.log('User that logged in: ' + this.user.username)
+        // }
     
         const guestLinks = (
             <div className='col-10'>

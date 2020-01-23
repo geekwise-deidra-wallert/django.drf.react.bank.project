@@ -101,21 +101,40 @@ import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL,
 
 // Check the token and load user
 export const loadUser = () => (dispatch, getState) => {
- 
 
-    axios.get('https://bank-backend-deidra.herokuapp.com/auth/user', tokenConfig(getState))
+     // User loading
+     dispatch({ type: USER_LOADING });
+
+     // Get token from state
+     const token = getState().auth.token;
+ 
+     // Headers
+     const config = {
+         headers: {
+             'Content-Type': 'application/json'
+         }
+     }
+
+     // If token add to headers config
+     if(token) {
+         config.headers['Authorization'] = `Token ${token}`;
+     }
+ 
+    axios
+        .get('https://bank-backend-deidra.herokuapp.com/auth/user', config)
         .then(res => {
             dispatch ({
                 type: USER_LOADED,
                 payload : res.data
             })
-        }).catch (err => {
+        })
+        .catch (err => {
             console.log(err)
             dispatch({
                 type: AUTH_ERROR
-            })
-        })
-}
+            });
+        });
+};
 
 // LOGIN USER
 export const login = (username, password) => dispatch => {
@@ -140,7 +159,7 @@ export const login = (username, password) => dispatch => {
             dispatch({
                 type: LOGIN_FAIL
             })
-            alert(err.response.data.non_field_errors);
+            // alert(err.response.data.non_field_errors);
         })
 
 }
