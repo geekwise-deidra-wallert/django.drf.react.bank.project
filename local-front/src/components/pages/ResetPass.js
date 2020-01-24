@@ -26,7 +26,7 @@ export class Reset extends Component {
     this.setState({ justReset: true });
   };
 
-  onchange = event => {
+  onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
