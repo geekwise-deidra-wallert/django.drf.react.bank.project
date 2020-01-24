@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Modal from "../layout/ModalClient";
 import axios from "axios";
 
@@ -21,7 +22,10 @@ class Client extends Component {
   componentDidMount() {
     axios
       .get("https://bank-backend-deidra.herokuapp.com/client/")
-      .then(res => this.setState({ clients: res.data }))
+      .then(res => {
+        this.setState({ clients: res.data });
+        console.log(this.props.auth)
+      })
       .catch(err => console.log(err));
     axios
       .get("https://bank-backend-deidra.herokuapp.com/branch/")
@@ -151,4 +155,9 @@ class Client extends Component {
     );
   }
 }
-export default Client;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps,)(Client);
+

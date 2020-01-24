@@ -35,36 +35,26 @@ export class Register extends Component {
         axios
             .get("https://bank-backend-deidra.herokuapp.com/groups/")
             .then( response => {
+
                 if (this.props.auth.user != null){
                     this.setState({ groupName: this.props.auth.user.groups[0].name});
                 }
-                this.setState({ groupList:response.data.results});
-                console.log(this.state.groupList)
+                    this.setState({ groupList:response.data});
+                    console.log(this.props.auth.user)
+                 
             })
             .catch(error => console.log(error))
     }
 
     renderGroupOptions(){
-        if(!this.props.isAuthenticated || this.state.groupName === "Member"){
-            return this.state.groupList.map(group =>(
-                <option key={group.id} value={group.id}>{group.name}</option>
-            ));
-        }
-        else if(this.state.groupName === "Branch Staff") {
-            return this.state.groupList.map(group => (
-              <option key={group.id} value={group.id}>{group.name}</option>
-            ));
-          }
-        else if(this.state.groupName === "Branch Admin") {
-            return this.state.groupList.map(group => (
-              <option key={group.id} value={group.id}>{group.name}</option>
-            ));
-          }
+        return this.state.groupList.map(group => (
+            <option key={group.id} value={group.id}>{group.name}</option>
+          ));
     }
 
     groupChoice = event => {
         const {value} = event.target;
-        this.setState({groups: [value]});
+        this.setState({groups: [parseInt(value)]});
     };
 
 
@@ -82,21 +72,25 @@ export class Register extends Component {
 
     formSubmit = (event) => {
         event.preventDefault();
-        axios
-            .post('https://bank-backend-deidra.herokuapp.com/auth/register', this.state)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err));
         const {email, password, username, groups} = this.state
-        if (username === '' || password === ''){
-            this.setState({message: 'Name and Password must be filled out.'})
-        } else {
-            this.setState({message: ''})
-            const newUser = {username, email, password, groups};
-            register(newUser, this.context.dispatch);
-            this.setState({username: ''});
-            this.setState({email: ''});
-            this.setState({password: ''});
-        }
+        const newUser = {
+            username,
+            password,
+            email,
+            groups
+        };
+        this.props.register(newUser)
+        
+        // if (username === '' || password === ''){
+        //     this.setState({message: 'Name and Password must be filled out.'})
+        // } else {
+        //     this.setState({message: ''})
+        //     const newUser = {username, email, password, groups};
+        //     register(newUser, this.dispatch);
+        //     this.setState({username: ''});
+        //     this.setState({email: ''});
+        //     this.setState({password: ''});
+        // }
     }
 
     render() {
@@ -128,7 +122,7 @@ export class Register extends Component {
                         </div>
                         <div className="form-group">
                             <label>Group/</label>
-                            <select className="form-control" name="groups" onChange={this.handleChange}> {this.renderGroupOptions()}
+                            <select className="form-control" name="groups" onChange={this.groupChoice}> {this.renderGroupOptions()}
                             </select> 
                         </div>
                         <button type="submit" className="btn btn-primary col-6 align-self-center">Submit</button>
