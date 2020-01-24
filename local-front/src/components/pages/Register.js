@@ -18,10 +18,56 @@ export class Register extends Component {
         username: '',
         email: '',
         password: '',
-        // groups: [],
+        justRegister: false,
+        justRegisterUser: false,
+        groups: [1],
+        groupList: [],
+        groupName: ""
     }
 
-    // Groups = []
+    componentDidMount(){
+        this.setState({justRegister: false});
+        this.setState({justRegisterUser: false});
+        this.getGroupList();
+    };
+
+    getGroupList(){
+        axios
+            .get("https://bank-backend-deidra.herokuapp.com/groups/")
+            .then( response => {
+                if (this.props.auth.user != null){
+                    this.setState({ groupName: this.props.auth.user.groups[0].name});
+                }
+                this.setState({ groupList:response.data.results});
+                console.log(this.state.groupList)
+            })
+            .catch(error => console.log(error))
+    }
+
+    renderGroupOptions(){
+        if(!this.props.isAuthenticated || this.state.groupName === "Member"){
+            return this.state.groupList.map(group =>(
+                <option key={group.id} value={group.id}>{group.name}</option>
+            ));
+        }
+        else if(this.state.groupName === "Branch Staff") {
+            return this.state.groupList.map(group => (
+              <option key={group.id} value={group.id}>{group.name}</option>
+            ));
+          }
+        else if(this.state.groupName === "Branch Admin") {
+            return this.state.groupList.map(group => (
+              <option key={group.id} value={group.id}>{group.name}</option>
+            ));
+          }
+    }
+
+    groupChoice = event => {
+        const {value} = event.target;
+        this.setState({groups: [value]});
+    };
+
+
     userInput = (nameText) => {
         this.setState({username: nameText.target.value});
     }
@@ -34,40 +80,18 @@ export class Register extends Component {
         this.setState({password: passwordText.target.value});
     }
 
-    // groupInput = (groupSelect) => {
-    //     this.setState({groups: groupSelect.target.value});
-    // }
-    
-    // componentDidMount(){
-    //     this.getGroups();
-    // }
-
-    // getGroups(){
-    //     axios
-    //         .get('https://bank-backend-deidra.herokuapp.com/users/api/auth/groups')
-    //         .then(response => console.log(response))
-    //         .catch(error => console.log(error))
-    // }
-
-    // renderGroupOptions(){
-    //     console.log(this.state.Groups)
-    //     return this.state.Groups.map(group => (
-    //     <option value={`${group.id}`}>{group.name}</option>
-    //     ))
-    // }
-
     formSubmit = (event) => {
         event.preventDefault();
         axios
             .post('https://bank-backend-deidra.herokuapp.com/auth/register', this.state)
             .then(res => console.log(res.data))
             .catch(err => console.log(err));
-        const {email, password, username} = this.state
+        const {email, password, username, groups} = this.state
         if (username === '' || password === ''){
             this.setState({message: 'Name and Password must be filled out.'})
         } else {
             this.setState({message: ''})
-            const newUser = {username, email, password};
+            const newUser = {username, email, password, groups};
             register(newUser, this.context.dispatch);
             this.setState({username: ''});
             this.setState({email: ''});
@@ -77,7 +101,7 @@ export class Register extends Component {
 
     render() {
         console.log ( this )
-        if(this.context.auth.isAuthenticated){
+        if(this.isAuthenticated){
             return <Redirect to="/" />
         }
         const { username, email, password} = this.state;
@@ -102,11 +126,11 @@ export class Register extends Component {
                             <label htmlFor="exampleInputPassword1">Password</label>
                             <input onChange={this.passwordInput} value={password} type="password" className="form-control" id="exampleInputPassword1"/>
                         </div>
-                        {/* <div>
-                        <select name="groups" value={this.state.groups} onChange={this.groupInput}>
-                            {this.renderGroupOptions()}
-                        </select> 
-                        </div> */}
+                        <div className="form-group">
+                            <label>Group/</label>
+                            <select className="form-control" name="groups" onChange={this.handleChange}> {this.renderGroupOptions()}
+                            </select> 
+                        </div>
                         <button type="submit" className="btn btn-primary col-6 align-self-center">Submit</button>
                     </div>
                 </form>
@@ -116,7 +140,8 @@ export class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated : state.auth.isAuthenticated
+    isAuthenticated : state.auth.isAuthenticated,
+    auth: state.auth
   })
   
   export default connect(mapStateToProps, {register})(Register);
