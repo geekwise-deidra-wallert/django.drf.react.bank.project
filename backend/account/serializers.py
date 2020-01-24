@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate
 class PermissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Permission
-        fields = ('name',)
+        fields = ('name', 'id',)
 
 #Group Serializer
 class GroupSerializer(serializers.ModelSerializer):
@@ -36,7 +36,7 @@ class UserSerializer(serializers.ModelSerializer):
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password')
+        fields = ('id', 'username', 'email', 'password', 'groups')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -45,7 +45,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             validated_data['email'],
             validated_data['password']
         )
-
+        user.groups.set(validated_data['groups'])
         return user
 
 # Login Serializer
