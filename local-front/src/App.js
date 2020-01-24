@@ -3,7 +3,7 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/layout/PrivateRouter";
 
 import Header from "./components/layout/Header";
@@ -13,6 +13,7 @@ import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import Home from "./components/pages/Home";
 import Dashboard from "./components/pages/Dashboard";
+import Reset from "./components/pages/ResetPass";
 import { loadUser } from "./actions/auth";
 
 
@@ -26,12 +27,15 @@ class App extends Component {
         <Router>
           <div>
             <Header />
-            <PrivateRoute path="/branches" component={Branches} />
-            <PrivateRoute path="/clients" component={Clients} />
-            <Route path="/" exact component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Switch>
+              <PrivateRoute path="/branches" component={Branches} />
+              <PrivateRoute path="/clients" component={Clients} />
+              <Route path="/" exact component={Home} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/passwords" component={Reset}/>
+            </Switch>
           </div>
         </Router>
       </Provider>
