@@ -13,7 +13,9 @@ const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
   isLoading: false,
-  user: null
+  user: null,
+  // header: '',
+  // authLevel: null,
 };
 
 export default function (state = initialState, action) {
@@ -51,8 +53,20 @@ export default function (state = initialState, action) {
         token: null,
         user: null,
         isAuthenticated: false,
-        isLoading: false
+        isLoading: false,
+        // group: null,
+        // authLevel: null
       };
+    // case 'HEADER_CHANGE':
+    //   return {
+    //     ...state,
+    //     header: action.payload,
+    //   }
+    // case 'GET_AUTH_LEVEL':
+    //   return {
+    //     ...state,
+    //     authLevel: action.payload
+    //   }
 
     default:
       return state;
