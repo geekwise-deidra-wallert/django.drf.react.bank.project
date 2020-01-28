@@ -14,7 +14,6 @@ const initialState = {
   isAuthenticated: null,
   isLoading: false,
   user: null,
-  // header: '',
   // authLevel: null,
 };
 
