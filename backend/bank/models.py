@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 
 def my_view(request):
     username = request.POST['username']
@@ -44,7 +45,8 @@ class Client (models.Model):
     
     connect_to_branch = models.ForeignKey(
         Branch,
-        on_delete = models.CASCADE
+        on_delete = models.CASCADE,
+        null=True
     )
 
     def __str__(self):
@@ -67,7 +69,8 @@ class Product(models.Model):
     )
     connect_to_client = models.ForeignKey(
         Client,
-        on_delete = models.CASCADE
+        on_delete = models.CASCADE,
+        null=True
     )
 
     def __str__(self):
@@ -78,10 +81,17 @@ class Product(models.Model):
 class Account (models.Model):
     account_id = str(uuid.uuid4())
 
-    connect_to_products = models.ForeignKey(
-        Product,
-        on_delete= models.CASCADE
+    holder = models.ForeignKey(
+        User,
+        related_name='holders',
+        on_delete=models.CASCADE,
+        null=True
     )
+
+    # connect_to_products = models.ForeignKey(
+    #     Product,
+    #     on_delete= models.CASCADE
+    # )
     connect_to_client = models.OneToOneField(
         Client, 
         on_delete = models.CASCADE
@@ -90,5 +100,5 @@ class Account (models.Model):
 
     def __str__ (self):
         return (
-            f"{self.connect_to_client} | {self.account_id}| {self.default_account_params}"
+            f"{self.connect_to_client} | {self.account_id}"
         )

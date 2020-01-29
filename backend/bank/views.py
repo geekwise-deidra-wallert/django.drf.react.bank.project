@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from bank.models import Branch, Client, Product, Account
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -32,4 +32,13 @@ class ProductViewSet ( viewsets.ModelViewSet ):
 
 class AccountViewSet ( viewsets.ModelViewSet ):
     queryset = Account.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
     serializer_class = AccountSerializer
+
+    def get_queryset(self):
+        return self.request.user.holders.all()
+
+    def perform_create(self, serializer):
+        serializer.save(holder=self.request.user)
